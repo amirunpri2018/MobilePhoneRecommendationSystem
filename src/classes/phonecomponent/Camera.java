@@ -15,8 +15,8 @@ import java.util.ArrayList;
  */
 public class Camera {
     
-    private boolean hasP = false;
-    private boolean hasS = false;
+//    private boolean hasP = false;
+//    private boolean hasS = false;
     
     //Primary (Back) Camera
     public String pPhoto_Quality = "-";
@@ -33,16 +33,14 @@ public class Camera {
     public String sPhoto_Quality = "-";
     private String sFeature = "";
     
-    public Camera(boolean p,boolean s,String pInfo,String cInfo,String vInfo,String sInfo){
-        if(p){
+    public Camera(String pInfo,String cInfo,String vInfo,String sInfo){
+        if(pInfo!=null && pInfo.length()!=0 && !pInfo.equals("")){
             pPhoto_Quality = pInfo.split(",")[0];
             pFeature = pInfo.substring(pPhoto_Quality.length()+2);
             cFeature = cInfo;
             vFeature = vInfo;
-            hasP = p;
         }
-        if(s){
-            hasS = s;
+        if(sInfo!=null && sInfo.length()!=0 && !sInfo.equals("")){
             sPhoto_Quality = sInfo.split(",")[0];
             sFeature = sInfo.substring(sPhoto_Quality.length()+2);
         }

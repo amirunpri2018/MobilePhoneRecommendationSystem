@@ -12,7 +12,21 @@ package classes;
  */
 public class KeypadPhone extends MobilePhone{
     
-    boolean keypad = true;
-    boolean touchscreen = false;
+    
+    public KeypadPhone(String information){
+        super(information);
+        keypad = true;
+        touchscreen = false;
+    }
+    
+    public void loadAdditionalInfo(String information){
+        String[] info = information.split("\t");
+        try{
+            c_feature.Games = info[loadDao++];
+            c_memory.oldSchool(info[loadDao++],info[loadDao++]);
+        }catch(ArrayIndexOutOfBoundsException e){
+            loaded = false;
+        }
+    }
     
 }

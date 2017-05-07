@@ -12,7 +12,11 @@ package classes;
  */
 public class SmartPhone extends MobilePhone{
     
-    boolean keypad = false;
-    boolean touchscreen = true;
+    
+    public SmartPhone(String information){
+        super(information);
+        keypad = false;
+        touchscreen = true;
+    }
     
 }

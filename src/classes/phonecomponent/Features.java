@@ -31,25 +31,13 @@ public class Features {
         Games = "";
     }
     
-    public Features(String s,String m,String b,String g,String j,String a){
-        Sensors = s;
-        Messaging = m;
-        Browser = b;
-        Games = g;
-        Java = j;
-        additional = a;
-        Games = "";
-    }
-    
     /**
      * Return all information
      * 0 - Sensors
      * 1 - Messaging
      * 2 - Browser
-     * 3 - Games *
-     * 3 / 4* - Java
-     * 4 / 5* - Additional info
-     * \* is keypad phone
+     * 3 - Java
+     * 4 - Additional info
      * @return all information
      */
     public ArrayList<String> getInfo(){

@@ -13,7 +13,7 @@ package classes;
 public class Controller {
     //LOAD FILE FROM EXCEL
     public static void main(String[] args) {
-        MobilePhone a = new Samsung("hehe");
+        MobilePhone a = new Samsung("hehe", 5.5f);
     }
     
 }
