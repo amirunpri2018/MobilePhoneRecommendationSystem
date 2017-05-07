@@ -6,6 +6,9 @@
 
 package classes;
 
+import java.util.ArrayList;
+import static lib.Tools.readLine;
+
 /**
  *
  * @author JA
@@ -17,13 +20,15 @@ public class KeypadPhone extends MobilePhone{
         super(information);
         keypad = true;
         touchscreen = false;
+        loadAdditionalInfo(information);
     }
     
-    public void loadAdditionalInfo(String information){
-        String[] info = information.split("\t");
+    private void loadAdditionalInfo(String information){
+        ArrayList<String> info = readLine(information);
         try{
-            c_feature.Games = info[loadDao++];
-            c_memory.oldSchool(info[loadDao++],info[loadDao++]);
+            c_feature.Games = info.get(loadDao++);
+            c_memory.oldSchool(info.get(loadDao++),info.get(loadDao++));
+            loaded = true;
         }catch(ArrayIndexOutOfBoundsException e){
             loaded = false;
         }

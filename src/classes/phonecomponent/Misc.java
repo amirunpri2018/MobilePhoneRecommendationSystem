@@ -15,7 +15,7 @@ import static lib.Tools.*;
  */
 public class Misc {
     
-    public ArrayList<String> Colors;
+    public ArrayList<String> Colors = new ArrayList<>();
     public String SAR_EU;
     public String Price_group;
     

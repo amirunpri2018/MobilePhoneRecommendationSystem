@@ -23,13 +23,6 @@ public class Platform {
     private String GPU;
     private String GPU2 = "";
     
-    public Platform(String o,String cs,String c,String g){
-        OS = o;
-        Chipset = cs;
-        CPU = c;
-        GPU = g;
-    }
-    
     public Platform(String o,String cs,String cs2,String c,String c2,String g,String g2){
         OS = o;
         Chipset = cs;
@@ -57,7 +50,7 @@ public class Platform {
             combine("CPU",CPU),
             combine(" ",CPU2),
             combine("GPU",GPU),
-            combine(" ",GPU)
+            combine(" ",GPU2)
         });
         return info;
     }

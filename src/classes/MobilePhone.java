@@ -8,7 +8,9 @@ package classes;
 
 import classes.phonecomponent.*;
 import java.util.ArrayList;
+import static lib.Tools.combine;
 import static lib.Tools.loadInfo;
+import static lib.Tools.readLine;
 
 /**
  *
@@ -25,7 +27,7 @@ public abstract class MobilePhone {
     
     //ADDITIONAL INFO
     protected String c_network;
-    protected boolean c_isLaunch;
+//    protected boolean c_isLaunch;
     protected String c_launch;
     protected Body c_body;
     protected Display c_display;
@@ -52,9 +54,9 @@ public abstract class MobilePhone {
     public String getFullName(){return brand+" "+name;}
     
     //GET ADD INFO
-    public String getNetwork(){return c_network;}
-    public boolean isLaunch(){return c_isLaunch;}
-    public String getLaunch(){return c_launch;}
+    public String getNetwork(){return combine("Technology",c_network);}
+//  public boolean isLaunch(){return c_isLaunch;}
+    public String getLaunch(){return combine("Status",c_launch);}
     public ArrayList<String> getBody(){return c_body.getInfo();}
     public ArrayList<String> getDisplay(){return c_display.getInfo();}
     public ArrayList<String> getPlatform(){return c_platform.getInfo();}
@@ -74,85 +76,91 @@ public abstract class MobilePhone {
     public String memory(){return c_memory.RAM;}
     public String price(){return getPrice();}
     public String brand(){return getBrand();}
+    public float getRating(){return rating;}
     
     public MobilePhone(String information){
-        String[] info = information.split("\t");
-        name = loadInfo(info[loadDao++]);
-        price = loadInfo(info[loadDao++]);
-        image = loadInfo(info[loadDao++]);
-        c_network = loadInfo(info[loadDao++]);
-        c_launch = loadInfo(info[loadDao++]);
+//        loadDao = 0;
+        ArrayList<String> info = readLine(information);
+        brand = loadInfo(info.get(loadDao++));
+        name = loadInfo(info.get(loadDao++));
+        price = loadInfo(info.get(loadDao++));
+        image = loadInfo(info.get(loadDao++));
+        c_network = loadInfo(info.get(loadDao++));
+        c_launch = loadInfo(info.get(loadDao++));
         
-        c_body = new Body(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,Integer.parseInt(loadInfo(info[loadDao++]))
-                ,loadInfo(info[loadDao++])
+        c_body = new Body(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,Integer.parseInt(loadInfo(info.get(loadDao++)))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_display = new Display(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_display = new Display(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_platform = new Platform(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_platform = new Platform(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_memory = new Memory(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_memory = new Memory(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_camera = new Camera(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_camera = new Camera(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_sound = new Sound(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_sound = new Sound(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_comms = new Comms(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_comms = new Comms(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_feature = new Features(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_feature = new Features(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_battery = new Battery(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_battery = new Battery(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_misc = new Misc(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_misc = new Misc(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
-        c_tests = new Tests(loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
-                ,loadInfo(info[loadDao++])
+        c_tests = new Tests(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
         loaded = true;
