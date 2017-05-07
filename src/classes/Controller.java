@@ -6,6 +6,10 @@
 
 package classes;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author JA
@@ -13,7 +17,17 @@ package classes;
 public class Controller {
     //LOAD FILE FROM EXCEL
     public static void main(String[] args) {
-        MobilePhone a = new Samsung("hehe", 5.5f);
+    }
+    
+    public ArrayList<String> readLine(String str){
+        ArrayList<String> list = new ArrayList<>();
+        Matcher m = Pattern.compile("([^,\"]\\S*|\".+?\")\\s*").matcher(str);
+        while (m.find()){
+            String s = m.group(1).replaceAll("\"","");
+            if(s.charAt(s.length()-1)==',') s=s.substring(0,s.length()-1);
+            list.add(s); // Add .replace("\"", "") to remove surrounding quotes.
+        }
+        return list;
     }
     
 }
