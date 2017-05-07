@@ -20,9 +20,9 @@ import java.util.regex.Pattern;
 public class Tools {
     
     //SAME LENGTH STRING
-    public static int COMBINELIMIT = 16;
+    public static int COMBINELIMIT = 32;
     public static String combine(String a, String b){
-        for(int i=a.length();i<16;i+=8){
+        for(int i=a.length();i<COMBINELIMIT;i+=8){
             a += "\t";
         }
         return a+b;
@@ -30,7 +30,9 @@ public class Tools {
     
     //ADDING INFO OF COMPONENT
     public static ArrayList<String> addInfo(ArrayList a,String s){
-        if(s!=null && !s.equals(""))    a.add(s);
+        if(s!=null && !s.equals("") && s.split("\t").length>1){
+            a.add(s);
+        }
         return a;
     }
     public static ArrayList<String> addInfos(ArrayList a,String[] s){
@@ -48,6 +50,15 @@ public class Tools {
         }else{
             temp = "";
         }return temp;
+    }
+    public static ArrayList<String> returnInfo(String component,ArrayList<String> a){
+        for(int i=0;i<a.size();i++){
+            String s = a.get(i);
+            if(i==0) s = combine(component,s);
+            else s = combine("",s);
+            a.set(i,s);
+        }
+        return a;
     }
     
     //SIZE
@@ -131,9 +142,6 @@ public class Tools {
             if(s.length()>0 && s.charAt(s.length()-1)==',') s=s.substring(0,s.length()-1);
             list.add(s);
         }
-//        for(String s:list){
-//            System.out.println(s);
-//        }
         return list;
     }
 }

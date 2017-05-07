@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import static lib.Tools.combine;
 import static lib.Tools.loadInfo;
 import static lib.Tools.readLine;
+import static lib.Tools.COMBINELIMIT;
+import static lib.Tools.returnInfo;
 
 /**
  *
@@ -69,6 +71,31 @@ public abstract class MobilePhone {
     public ArrayList<String> getMisc(){return c_misc.getInfo();}
     public ArrayList<String> getTests(){return c_tests.getInfo();}
     
+    //GET ALL INFO
+    public ArrayList<String> getInfo(){
+        ArrayList<String> info = new ArrayList<>();
+        COMBINELIMIT = 32;
+        info.add(combine("Brand",getBrand()));
+        info.add(combine("Name",getName()));
+        info.add(combine("Image",getImage()));
+        info.add(combine("Price",getPrice()));
+        COMBINELIMIT = 16;
+        info.add(combine("Network",getNetwork()));
+        info.add(combine("Launch",getLaunch()));
+        info.addAll(returnInfo("Body",getBody()));
+        info.addAll(returnInfo("Display",getDisplay()));
+        info.addAll(returnInfo("Platform",getPlatform()));
+        info.addAll(returnInfo("Memory",getMemory()));
+        info.addAll(returnInfo("Camera",getCamera()));
+        info.addAll(returnInfo("Sound",getSound()));
+        info.addAll(returnInfo("Comms",getComms()));
+        info.addAll(returnInfo("Features",getFeatures()));
+        info.addAll(returnInfo("Battery",getBattery()));
+        info.addAll(returnInfo("Misc",getMisc()));
+        info.addAll(returnInfo("Tests",getTests()));
+        return info;
+    }
+    
     //FILTER
     public String cameraF(){return c_camera.pPhoto_Quality;}
     public String cameraB(){return c_camera.sPhoto_Quality;}
@@ -78,6 +105,7 @@ public abstract class MobilePhone {
     public String brand(){return getBrand();}
     public float getRating(){return rating;}
     
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
     public MobilePhone(String information){
 //        loadDao = 0;
         ArrayList<String> info = readLine(information);
@@ -165,5 +193,5 @@ public abstract class MobilePhone {
         
         loaded = true;
     }
-    
+    //</editor-fold>
 }

@@ -60,6 +60,7 @@ public class Controller {
                         
                         ArrayList<String> temp = readLine(line);
                         MobilePhone p;
+                        COMBINELIMIT = 16;
                         
                         //SEE GOT WHAT BRAND THEN ADD WHAT BRAND HERE
                         /*
@@ -108,10 +109,9 @@ public class Controller {
         readFile();
         if(!list.isEmpty()){
             for(MobilePhone p:list){
-                System.out.println(p.brand);
-                System.out.println(p.name);
-                for(String s:p.getCamera()) System.out.println(s);
-                for(String s:p.getDisplay()) System.out.println(s);
+                for(String s: p.getInfo()){
+                    System.out.println(s);
+                }
             }
         }
     }
