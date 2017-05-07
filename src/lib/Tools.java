@@ -7,6 +7,8 @@
 package lib;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -85,6 +87,15 @@ public class Tools {
         long s_1 = toByte(s1.split(" "));
         long s_2 = toByte(s2.split(" "));
         return toHR(s_1+s_2);
+    }
+    
+    public static void displayHashMap(HashMap map) {
+        Iterator it = map.keySet().iterator();
+        while(it.hasNext()) {
+            String key = (String) it.next();
+            System.out.println("key: "+key);
+            System.out.println(map.get(key));
+        }
     }
     
 }

@@ -3,13 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/gui/MainFrame.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/knowledge/Information.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/gui/FilterPanel.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/knowledge/SimpleInformation.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/knowledge/Result.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/classes/MobilePhone.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/lib/Search.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/gui/SingleInformationPanel.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/gui/DetailPhoneInfoPanel.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/classes/phonecomponent/Body.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/classes/Samsung.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/lib/Tools.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/gui/MainFrame.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/knowledge/Information.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/knowledge/SimpleInformation.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/gui/SimplePhoneInfoPanel.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/gui/DetailPhoneInfoFrame.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Knowledge/src/classes/SmartPhone.java</file>
         </group>
     </open-files>
 </project-private>
