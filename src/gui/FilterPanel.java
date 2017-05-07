@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -38,16 +39,6 @@ public class FilterPanel extends javax.swing.JPanel {
             ArrayList<String> numberOfSimSlots = new ArrayList<>();
             ArrayList<String> f_camera = new ArrayList<>();
             ArrayList<String> b_camera = new ArrayList<>();
-            
-            while (checkboxIterator.hasNext()) {
-                String prefix = (String) checkboxIterator.next();
-                if (prefix.contains("brand")) {
-                    JCheckBox checkbox = checkboxes.get(prefix);
-                    if (checkbox.isSelected()) {
-                        brand.add(checkbox)
-                    }
-                }
-            }
             keyword.put("brand", brand);
             keyword.put("price", price);
             keyword.put("os", os);
@@ -56,6 +47,31 @@ public class FilterPanel extends javax.swing.JPanel {
             keyword.put("numberOfSimSlots", numberOfSimSlots);
             keyword.put("f_camera", f_camera);
             keyword.put("b_camera", b_camera);
+            String[] key = {"brand", "price", "os", "memory", "storage", "numberOfSimSlots", "f_camera", "b_camera"};
+            while (checkboxIterator.hasNext()) {
+                String prefix = (String) checkboxIterator.next();
+                JCheckBox checkbox = checkboxes.get(prefix);
+                if (checkbox.isSelected()) {
+                    for (String k : key) {
+                        if (prefix.contains(k)) {
+                            if (prefix.contains("other")) {
+                                String newPrefix = prefix + "TextField";
+                                keyword.get(k).add(textfields.get(newPrefix).getText());
+                            } else {
+                                keyword.get(k).add(checkbox.getText());
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            Iterator keywordIterator = keyword.keySet().iterator();
+            while(keywordIterator.hasNext()) {
+                ArrayList<String> list = keyword.get(keywordIterator.next());
+                list.stream().forEach((l) -> {
+                    System.out.println(l);
+                });
+            }
         }
     };
     private Thread searchThread = new Thread(searchRunnable);
@@ -110,15 +126,11 @@ public class FilterPanel extends javax.swing.JPanel {
         checkboxes.put("b_camera_16To20MP", b_camera_16To20MP);
         checkboxes.put("b_camera_21AndupMP", b_camera_21AndupMP);
         checkboxes.put("b_camera_noCamera", b_camera_noCamera);
+        
     }
 
     public void searchOnClick() {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
+        Thread thread = new Thread(searchRunnable);
         thread.start();
     }
 
@@ -822,6 +834,7 @@ public class FilterPanel extends javax.swing.JPanel {
 
     private void searchButtonTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonTopActionPerformed
         // TODO add your handling code here:
+        searchOnClick();
 //        Result[] results = API.search(keywords);
     }//GEN-LAST:event_searchButtonTopActionPerformed
 
