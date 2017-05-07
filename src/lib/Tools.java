@@ -122,8 +122,10 @@ public class Tools {
          * \S*      followed by zero or more non-space characters
          * |        or
          * ".+?"    a " symbol followed by whatever until another "
+         * Pattern.Multiline    Enables multiline reading
+         * Pattern.Dotall       Ignores normal line ending
          */
-        Matcher m = Pattern.compile("([^,\"]\\S*|\"\"\".+?\"\"\")\\s*").matcher(str);
+        Matcher m = Pattern.compile("([^,\"]\\S*|\"\"\".+?\"\"\")\\s*",Pattern.MULTILINE|Pattern.DOTALL).matcher(str);
         while (m.find()){
             String s = m.group(1).replaceAll("\"","");
             if(s.length()>0 && s.charAt(s.length()-1)==',') s=s.substring(0,s.length()-1);
