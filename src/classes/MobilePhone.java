@@ -28,6 +28,7 @@ public abstract class MobilePhone {
     protected float rating;
     
     //ADDITIONAL INFO
+    //<editor-fold defaultstate="collapsed" desc="Components">
     protected String c_network;
 //    protected boolean c_isLaunch;
     protected String c_launch;
@@ -44,10 +45,12 @@ public abstract class MobilePhone {
     protected Tests c_tests;
     protected boolean keypad;
     protected boolean touchscreen;
+    //</editor-fold>
     
     protected int loadDao = 0;
     public boolean loaded = false;
     
+    //<editor-fold defaultstate="collapsed" desc="Getting Info">
     //GET BASIC INFO
     public String getImage(){return image;}
     public String getPrice(){return price;}             
@@ -70,8 +73,10 @@ public abstract class MobilePhone {
     public ArrayList<String> getBattery(){return c_battery.getInfo();}
     public ArrayList<String> getMisc(){return c_misc.getInfo();}
     public ArrayList<String> getTests(){return c_tests.getInfo();}
+    //</editor-fold>
     
     //GET ALL INFO
+    //<editor-fold defaultstate="collapsed" desc="getInfo()">
     public ArrayList<String> getInfo(){
         ArrayList<String> info = new ArrayList<>();
         COMBINELIMIT = 32;
@@ -95,6 +100,7 @@ public abstract class MobilePhone {
         info.addAll(returnInfo("Tests",getTests()));
         return info;
     }
+    //</editor-fold>
     
     //FILTER
     public String cameraF(){return c_camera.pPhoto_Quality;}
