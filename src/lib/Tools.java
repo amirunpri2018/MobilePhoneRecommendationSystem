@@ -144,4 +144,17 @@ public class Tools {
         }
         return list;
     }
+    
+    static String OUTPUT = "output.txt";
+    public static void writeOUT(String toWrite){
+        createFile("",OUTPUT);
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(OUTPUT));
+            bw.append(toWrite);
+            bw.newLine();
+            bw.close();
+        }catch (IOException e){
+            System.out.println("??? "+e);
+        }
+    }
 }

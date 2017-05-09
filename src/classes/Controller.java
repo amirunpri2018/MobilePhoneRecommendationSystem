@@ -26,9 +26,14 @@ public class Controller {
     //ARRAYLIST OF CREATED PHONES
     public static ArrayList<MobilePhone> list = new ArrayList<>();
     
+    //ARRAYLIST OF BRANDS
+    public static ArrayList<String> BRANDS = new ArrayList<>();
+    public static String[] brands = { "Samsung","Apple"};
+    
     //LOAD FILE FROM CSV
     public static void readFile(){
         if(!INIT){
+            for(String s:brands)BRANDS.add("\"\"\""+s+"\"\"\"");
             if(createFile(PATH,FILE)){
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(FILE));
@@ -45,19 +50,19 @@ public class Controller {
                         Due to BufferedReader unable to bypass "\n" thing by design
                         This part will go right through it
                         */
-                        line = holder;
+                        if(holder!=null) line = holder;
+                        if(holder==null) break;
                         if(!holding) line = br.readLine();
                         while((holder = br.readLine())!=null){
+                            if(BRANDS.contains(holder.split(",")[0])) break;
                             if(holder.charAt(0)=='-'){
-                                line+=combine("\n",holder);
+                                line+=combine("\n",holder); 
                                 holding = false;
-                            }
-                            else{
+                            }else{
                                 holding = true;
                             }
                         }
                         //
-                        
                         ArrayList<String> temp = readLine(line);
                         MobilePhone p;
                         COMBINELIMIT = 16;
@@ -86,7 +91,6 @@ public class Controller {
                         }
                         //
                         list.add(p);
-                        INIT = true;
                     }
                 }catch(FileNotFoundException ex) {
                     System.out.println("!!!DATABASE NOT FOUND!!!");
@@ -103,12 +107,15 @@ public class Controller {
         }else{
             //FILE ALREADY LOADED
         }
+        INIT = true;
     }
     
     public static void main(String[] args) {
         readFile();
+        int i =0;
         if(!list.isEmpty()){
             for(MobilePhone p:list){
+                System.out.println("PHONE "+(i++));
                 for(String s: p.getInfo()){
                     System.out.println(s);
                 }
