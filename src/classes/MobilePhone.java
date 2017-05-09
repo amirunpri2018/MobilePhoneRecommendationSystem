@@ -110,7 +110,7 @@ public abstract class MobilePhone {
     public String price(){return getPrice();}
     public String brand(){return getBrand();}
     public ArrayList<String> colors(){return c_misc.Colors;}
-    public String type(){if(keypad) return "Keypad"; else return "Smart";}
+    public int type(){if(keypad) return 0; else return 1;}  //Keypad = 0, Smartphone = 1
     public float getRating(){return rating;}
     
     //<editor-fold defaultstate="collapsed" desc="Constructor">
