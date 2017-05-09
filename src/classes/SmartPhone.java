@@ -12,7 +12,6 @@ package classes;
  */
 public class SmartPhone extends MobilePhone{
     
-    
     public SmartPhone(String information){
         super(information);
         keypad = false;

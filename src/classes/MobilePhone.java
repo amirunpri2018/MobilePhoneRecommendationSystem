@@ -109,6 +109,8 @@ public abstract class MobilePhone {
     public String memory(){return c_memory.RAM;}
     public String price(){return getPrice();}
     public String brand(){return getBrand();}
+    public ArrayList<String> colors(){return c_misc.Colors;}
+    public String type(){if(keypad) return "Keypad"; else return "Smart";}
     public float getRating(){return rating;}
     
     //<editor-fold defaultstate="collapsed" desc="Constructor">
