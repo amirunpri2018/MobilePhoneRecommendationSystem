@@ -30,7 +30,8 @@ public class Tools {
     
     //ADDING INFO OF COMPONENT
     public static ArrayList<String> addInfo(ArrayList a,String s){
-        if(s!=null && !s.equals("") && s.split("\t").length>1){
+        String[] temp = s.split("\t");
+        if(s!=null && !s.equals("") && temp.length>1 && !temp[temp.length-1].equals(" ")){
             a.add(s);
         }
         return a;
@@ -129,14 +130,14 @@ public class Tools {
     public static ArrayList<String> readLine(String str){
         ArrayList<String> list = new ArrayList<>();
         /**
-         * [^,\"]   token starting with something other than " and ,
+         * [^\"]   token starting with something other than " and ,
          * \S*      followed by zero or more non-space characters
          * |        or
-         * ".+?"    a " symbol followed by whatever until another "
+         * \"\"\".+?\"\"\"    a """ symbol followed by whatever until another """
          * Pattern.Multiline    Enables multiline reading
          * Pattern.Dotall       Ignores normal line ending
          */
-        Matcher m = Pattern.compile("([^,\"]\\S*|\"\"\".+?\"\"\")\\s*",Pattern.MULTILINE|Pattern.DOTALL).matcher(str);
+        Matcher m = Pattern.compile("([^, \"]\\S*|\"\"\".+?\"\"\")\\s*",Pattern.MULTILINE|Pattern.DOTALL).matcher(str);
         while (m.find()){
             String s = m.group(1).replaceAll("\"","");
             if(s.length()>0 && s.charAt(s.length()-1)==',') s=s.substring(0,s.length()-1);
@@ -157,4 +158,20 @@ public class Tools {
             System.out.println("??? "+e);
         }
     }
+    
+    public static String wtf(int i){
+        String toRet = "";
+        i += 65;
+        int j=64;
+        boolean morethan = false;
+        while(i>90){
+            j++;
+            i-=26;
+            morethan = true;
+        }
+        if(morethan) toRet += (char) j;
+        toRet += (char) i;
+        return toRet;
+    }
+    
 }

@@ -26,6 +26,7 @@ public abstract class MobilePhone {
     protected String price;
     protected String image;
     protected float rating;
+    protected String type;
     
     //ADDITIONAL INFO
     //<editor-fold defaultstate="collapsed" desc="Components">
@@ -82,7 +83,7 @@ public abstract class MobilePhone {
         COMBINELIMIT = 32;
         info.add(combine("Brand",getBrand()));
         info.add(combine("Name",getName()));
-        info.add(combine("Image",getImage()));
+//        info.add(combine("Image",getImage()));
         info.add(combine("Price",getPrice()));
         COMBINELIMIT = 16;
         info.add(combine("Network",getNetwork()));
@@ -117,6 +118,7 @@ public abstract class MobilePhone {
     public MobilePhone(String information){
 //        loadDao = 0;
         ArrayList<String> info = readLine(information);
+        type = loadInfo(info.get(loadDao++));
         brand = loadInfo(info.get(loadDao++));
         name = loadInfo(info.get(loadDao++));
         price = loadInfo(info.get(loadDao++));
@@ -163,6 +165,7 @@ public abstract class MobilePhone {
         c_sound = new Sound(loadInfo(info.get(loadDao++))
                 ,loadInfo(info.get(loadDao++))
                 ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
         c_comms = new Comms(loadInfo(info.get(loadDao++))
@@ -187,6 +190,7 @@ public abstract class MobilePhone {
         );
         
         c_misc = new Misc(loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
                 ,loadInfo(info.get(loadDao++))
                 ,loadInfo(info.get(loadDao++))
         );

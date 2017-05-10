@@ -18,7 +18,7 @@ public class Controller {
     
     //LOAD FILE LOCATION
     private static final String PATH = "";
-    private static final String FILE = "hehe.csv";
+    private static final String FILE = "hehe (2).csv";
     
     //CHECKER FOR INITIALIZED
     protected static boolean INIT = false;
@@ -27,13 +27,13 @@ public class Controller {
     public static ArrayList<MobilePhone> list = new ArrayList<>();
     
     //ARRAYLIST OF BRANDS
-    public static ArrayList<String> BRANDS = new ArrayList<>();
-    public static String[] brands = { "Samsung","Apple"};
+    public static ArrayList<String> TYPE = new ArrayList<>();
+    public static String[] type = {"Smartphone","Keypad phone"};
     
     //LOAD FILE FROM CSV
     public static void readFile(){
         if(!INIT){
-            for(String s:brands)BRANDS.add("\"\"\""+s+"\"\"\"");
+            for(String s:type)TYPE.add("\"\"\""+s+"\"\"\"");
             if(createFile(PATH,FILE)){
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(FILE));
@@ -50,11 +50,14 @@ public class Controller {
                         Due to BufferedReader unable to bypass "\n" thing by design
                         This part will go right through it
                         */
-                        if(holder!=null) line = holder;
+                        if(holder!=null){
+                            line = holder;
+//                            System.out.println("line: "+line);
+                        }
                         if(holder==null) break;
-                        if(!holding) line = br.readLine();
+                        if(!holding) line += br.readLine();
                         while((holder = br.readLine())!=null){
-                            if(BRANDS.contains(holder.split(",")[0])) break;
+                            if(TYPE.contains(holder.split(",")[0])) break;
                             if(holder.charAt(0)=='-'){
                                 line+=combine("\n",holder); 
                                 holding = false;
@@ -64,8 +67,14 @@ public class Controller {
                         }
                         //
                         ArrayList<String> temp = readLine(line);
+                        System.out.println(temp.get(1));
                         MobilePhone p;
                         COMBINELIMIT = 16;
+                        
+//                        int i =0;
+//                        for(String s:temp){
+//                            System.out.println(wtf(i++)+" : "+s);
+//                        }
                         
                         //SEE GOT WHAT BRAND THEN ADD WHAT BRAND HERE
                         /*
@@ -73,7 +82,7 @@ public class Controller {
                         p = new <BRAND>(line,Float.parseFloat(temp[temp.length-1]));
                         temp[temp.length-1] == Phone rating
                         */
-                        switch(temp.get(0)){
+                        switch(temp.get(1)){
                             case "Samsung":
                                 p = new Samsung(line,Float.parseFloat(temp.get(temp.size()-1)));
                                 break;
@@ -83,8 +92,14 @@ public class Controller {
                             case "Nokia":
                                 p = new Nokia(line,Float.parseFloat(temp.get(temp.size()-1)));
                                 break;
-                            case "":
-                                p = new Apple(line,Float.parseFloat(temp.get(temp.size()-1)));
+                            case "Blackberry":
+                                p = new Blackberry(line,Float.parseFloat(temp.get(temp.size()-1)));
+                                break;
+                            case "Sony":
+                                p = new Sony(line,Float.parseFloat(temp.get(temp.size()-1)));
+                                break;
+                            case "LG":
+                                p = new LG(line,Float.parseFloat(temp.get(temp.size()-1)));
                                 break;
                             default:
                                 p = new Samsung("",0.0f);
@@ -119,6 +134,7 @@ public class Controller {
                 for(String s: p.getInfo()){
                     System.out.println(s);
                 }
+                System.out.println("---------------------------");
             }
         }
     }

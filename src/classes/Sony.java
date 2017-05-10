@@ -10,9 +10,8 @@ package classes;
  *
  * @author JA
  */
-public class Nokia extends SmartPhone {
-    
-    public Nokia(String info, float rating){
+public class Sony extends SmartPhone {
+    public Sony(String info, float rating){
         super(info);
         this.rating = rating;
     }

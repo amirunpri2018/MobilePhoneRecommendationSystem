@@ -16,12 +16,14 @@ import static lib.Tools.*;
 public class Misc {
     
     public ArrayList<String> Colors = new ArrayList<>();
+    public String SAR_US;
     public String SAR_EU;
     public String Price_group;
     
-    public Misc(String c,String s,String p){
+    public Misc(String c,String s,String s2,String p){
         for(String c1:c.split(", ")) Colors.add(c1);
-        SAR_EU = s;
+        SAR_US = s;
+        SAR_EU = s2;
         Price_group = p;
     }
     
@@ -39,6 +41,7 @@ public class Misc {
         for(int i=1;i<Colors.size();i++) temp+= ", "+Colors.get(i);
         info = addInfos(info,new String[]{
             combine("Colors",temp),
+            combine("SAR US",SAR_US),
             combine("SAR EU",SAR_EU),
             combine("Price Group",Price_group)
         });
