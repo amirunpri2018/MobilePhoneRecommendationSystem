@@ -8,7 +8,10 @@ package classes;
 
 import java.util.ArrayList;
 import java.io.*;
+import java.util.Scanner;
+import knowledge.Result;
 import static lib.Tools.*;
+import static lib.Search.*;
 
 /**
  *
@@ -24,16 +27,19 @@ public class Controller {
     protected static boolean INIT = false;
     
     //ARRAYLIST OF CREATED PHONES
-    public static ArrayList<MobilePhone> list = new ArrayList<>();
+    public static ArrayList<MobilePhone> listOfPhone = new ArrayList<>();
     
-    //ARRAYLIST OF BRANDS
+    //ARRAYLIST OF TYPES
     public static ArrayList<String> TYPE = new ArrayList<>();
-    public static String[] type = {"Smartphone","Keypad phone"};
+    private static String[] type = {"Smartphone","Keypad phone"};
+    public static ArrayList<String> BRANDS = new ArrayList<>();
+    private static String[] brand = {"Samsung","Apple","Nokia","LG","Sony","Blackberry"};
     
     //LOAD FILE FROM CSV
     public static void readFile(){
         if(!INIT){
             for(String s:type)TYPE.add("\"\"\""+s+"\"\"\"");
+            for(String s:brand)BRANDS.add(s);
             if(createFile(PATH,FILE)){
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(FILE));
@@ -41,8 +47,8 @@ public class Controller {
                     String holder="";
                     boolean holding=false;
                     //DONOT REMOVE THESE
-                    line = br.readLine();       //GROUP
-                    line = br.readLine();       //DETAILS
+                    String ignore = br.readLine();       //GROUP
+                    ignore = br.readLine();       //DETAILS
                     //
                     while(true){
                         //READING LINES
@@ -50,31 +56,50 @@ public class Controller {
                         Due to BufferedReader unable to bypass "\n" thing by design
                         This part will go right through it
                         */
-                        if(holder!=null){
-                            line = holder;
-//                            System.out.println("line: "+line);
+                        boolean toRead = true;
+                        line = holder;
+                        if(!holding){
+                            line += br.readLine();
+                            String[] t = line.split(",");
+                            if(TYPE.contains(t[0])&&t[t.length-1].equals("\"\"\"EOL\"\"\"")) toRead = false;
                         }
-                        if(holder==null) break;
-                        if(!holding) line += br.readLine();
-                        while((holder = br.readLine())!=null){
-                            if(TYPE.contains(holder.split(",")[0])) break;
-                            if(holder.charAt(0)=='-'){
-                                line+=combine("\n",holder); 
-                                holding = false;
-                            }else{
-                                holding = true;
+                        if(toRead){
+                            while((holder = br.readLine())!=null){
+                                String[] t = holder.split(",");
+                                if(t[t.length-1].equals("\"\"\"EOL\"\"\"")){
+                                    line+=combine("\n",holder);
+                                    holding = false;
+                                    holder = "";
+                                    break;
+                                }
+                                if(TYPE.contains(t[0])) break;
+                                if(holder.charAt(0)=='-'){
+                                    line+=combine("\n",holder); 
+                                    holding = false;
+                                    holder = "";
+                                }else{
+                                    holding = true;
+                                }
                             }
                         }
+                        if(holder==null || line ==null) break;
                         //
-                        ArrayList<String> temp = readLine(line);
-                        System.out.println(temp.get(1));
-                        MobilePhone p;
-                        COMBINELIMIT = 16;
                         
+                        ArrayList<String> temp = readLine(line);
 //                        int i =0;
 //                        for(String s:temp){
 //                            System.out.println(wtf(i++)+" : "+s);
 //                        }
+//                        System.out.println("----------------------------");
+
+                        //JUST IN CASE GOT ROGUE NULL VALUE
+                        int pointer = temp.size()-2;
+                        while(temp.get(pointer).equals("null")){pointer--;}
+                        float rating = Float.parseFloat(temp.get(pointer));
+                        //
+                        
+                        MobilePhone p;
+                        COMBINELIMIT = 16;
                         
                         //SEE GOT WHAT BRAND THEN ADD WHAT BRAND HERE
                         /*
@@ -84,28 +109,28 @@ public class Controller {
                         */
                         switch(temp.get(1)){
                             case "Samsung":
-                                p = new Samsung(line,Float.parseFloat(temp.get(temp.size()-1)));
+                                p = new Samsung(line,rating);
                                 break;
                             case "Apple":
-                                p = new Apple(line,Float.parseFloat(temp.get(temp.size()-1)));
+                                p = new Apple(line,rating);
                                 break;
                             case "Nokia":
-                                p = new Nokia(line,Float.parseFloat(temp.get(temp.size()-1)));
+                                p = new Nokia(line,rating);
                                 break;
                             case "Blackberry":
-                                p = new Blackberry(line,Float.parseFloat(temp.get(temp.size()-1)));
+                                p = new Blackberry(line,rating);
                                 break;
                             case "Sony":
-                                p = new Sony(line,Float.parseFloat(temp.get(temp.size()-1)));
+                                p = new Sony(line,rating);
                                 break;
                             case "LG":
-                                p = new LG(line,Float.parseFloat(temp.get(temp.size()-1)));
+                                p = new LG(line,rating);
                                 break;
                             default:
                                 p = new Samsung("",0.0f);
                         }
                         //
-                        list.add(p);
+                        listOfPhone.add(p);
                     }
                 }catch(FileNotFoundException ex) {
                     System.out.println("!!!DATABASE NOT FOUND!!!");
@@ -113,7 +138,7 @@ public class Controller {
                 } catch (IOException e){
                     System.out.println("ERROR FILE READER FILE");
                 }catch(NullPointerException e){
-                    //FILE FINISH READING
+                    //FILE FINISH READING'
                 }
             }else{
                 System.out.println("!!!DATABASE NOT FOUND!!!");
@@ -127,14 +152,23 @@ public class Controller {
     
     public static void main(String[] args) {
         readFile();
-        int i =0;
-        if(!list.isEmpty()){
-            for(MobilePhone p:list){
-                System.out.println("PHONE "+(i++));
-                for(String s: p.getInfo()){
-                    System.out.println(s);
-                }
-                System.out.println("---------------------------");
+//        int i =0;
+//        if(!listOfPhone.isEmpty()){
+//            for(MobilePhone p:listOfPhone){
+////                System.out.println("PHONE "+(i++));
+//                System.out.println(p.getFullName());
+////                for(String s: p.getInfo()){
+////                    System.out.println(s);
+////                }
+////                System.out.println("---------------------------");
+//            }
+//        }
+        Scanner input = new Scanner(System.in);
+        while(true){
+            System.out.print("What to search? #");
+            ArrayList<Result> temp = search(input.nextLine());
+            for(Result r:temp){
+                System.out.println(r.getMP().getFullName());
             }
         }
     }

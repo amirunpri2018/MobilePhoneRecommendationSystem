@@ -1,5 +1,6 @@
 package knowledge;
 
+import classes.MobilePhone;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,11 +11,13 @@ public class Result {
     private Information[] informations;
     private SimpleInformation simpleInformation;
     private BufferedImage phoneImage;
+    private MobilePhone mp;
 
-    public Result() {
+    public Result(MobilePhone mp) {
         try {
-            phoneImage = ImageIO.read(new File("smartphone-samsung-s8.jpg"));
-            simpleInformation = new SimpleInformation("Samsung", "S8", "RM1999");
+            phoneImage = ImageIO.read(new File(mp.getImage()));
+            simpleInformation = new SimpleInformation(mp.getBrand(), mp.getName(), mp.getPrice());
+            this.mp = mp;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -31,5 +34,9 @@ public class Result {
     public Information[] getInformations() {
         return informations;
     }
-
+    
+    public MobilePhone getMP(){
+        return mp;
+    }
+    
 }

@@ -746,6 +746,12 @@ public class FilterPanel extends javax.swing.JPanel {
 
         filterScrollPane.setViewportView(filterPanel);
 
+        searchTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTextFieldActionPerformed(evt);
+            }
+        });
+
         searchButtonTop.setText("Search");
         searchButtonTop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -823,6 +829,10 @@ public class FilterPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         searchOnClick();
     }//GEN-LAST:event_searchButtonTopActionPerformed
+
+    private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
