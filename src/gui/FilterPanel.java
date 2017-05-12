@@ -13,6 +13,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import knowledge.Result;
 import knowledge.SimpleInformation;
+import lib.Search;
 import lib.Tools;
 
 /**
@@ -60,6 +61,11 @@ public class FilterPanel extends javax.swing.JPanel {
                     keyword.get("price").add(textfields.get(prefix).getText());
                 }
             }
+            keyword.put("search", new ArrayList<>());
+            keyword.get("search").add(searchTextField.getText());
+            //searching start here
+            Result[] results = Search.search(keyword);
+            showSearchResult(results);
         }
     };
     private Thread searchThread = new Thread(searchRunnable);
