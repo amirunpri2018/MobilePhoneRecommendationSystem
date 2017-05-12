@@ -65,14 +65,14 @@ public class Tools {
     //SIZE
     //<editor-fold defaultstate="collapsed" desc="Byte Conversion">
     public static int compareByte(String s1,String s2){
-        long s1_ = toByte(s1.split(" "));
-        long s2_ = toByte(s2.split(" "));
+        float s1_ = toByte(s1.split(" "));
+        float s2_ = toByte(s2.split(" "));
         if(s1_>s2_) return 1;
         else if (s1_==s2_) return 0;
         else return -1;
     }
-    public static long toByte(String[] s){
-        long l = Long.parseLong(s[0]);
+    public static float toByte(String[] s){
+        float l = Float.parseFloat(s[0]);
         int i;
         switch(s[1].charAt(0)){
             case 'K': i=1; break;
@@ -84,7 +84,7 @@ public class Tools {
         for(;i>0;i--){l*=1024;}
         return l;
     }
-    public static String toHR(long b){
+    public static String toHR(float b){
         int i=0;
         while(b>=1024){
             b/=1024;
@@ -101,8 +101,8 @@ public class Tools {
         return s+"B";
     }
     public static String addByte(String s1,String s2){
-        long s_1 = toByte(s1.split(" "));
-        long s_2 = toByte(s2.split(" "));
+        float s_1 = toByte(s1.split(" "));
+        float s_2 = toByte(s2.split(" "));
         return toHR(s_1+s_2);
     }
     //</editor-fold>
@@ -117,16 +117,6 @@ public class Tools {
     }
     
     
-    public static boolean createFile(String dir,String file){
-        File directory = new File(dir);
-        if(!directory.exists()) directory.mkdirs();
-        File f = new File(file);
-        try{
-            if(!f.exists()) f.createNewFile();
-        }catch(IOException e){
-            return false;
-        }return true;
-    }
     public static ArrayList<String> readLine(String str){
         ArrayList<String> list = new ArrayList<>();
         /**
@@ -146,6 +136,18 @@ public class Tools {
         return list;
     }
     
+    public static boolean createFile(String dir,String file){
+        File directory = new File(dir);
+        if(!directory.exists()) directory.mkdirs();
+        File f = new File(file);
+        try{
+            if(!f.exists()) f.createNewFile();
+        }catch(IOException e){
+            return false;
+        }return true;
+    }
+    
+    //DEBUGGING THINGS
     static String OUTPUT = "output.txt";
     public static void writeOUT(String toWrite){
         createFile("",OUTPUT);

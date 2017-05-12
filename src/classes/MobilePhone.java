@@ -84,7 +84,7 @@ public abstract class MobilePhone {
         info.add(combine("Brand",getBrand()));
         info.add(combine("Name",getName()));
 //        info.add(combine("Image",getImage()));
-        info.add(combine("Price",getPrice()));
+        info.add(combine("Price","RM "+getPrice()));
         COMBINELIMIT = 16;
         info.add(combine("Network",getNetwork()));
         info.add(combine("Launch",getLaunch()));
@@ -104,13 +104,27 @@ public abstract class MobilePhone {
     //</editor-fold>
     
     //FILTER
-    public String cameraF(){return c_camera.pPhoto_Quality;}
-    public String cameraB(){return c_camera.sPhoto_Quality;}
+    public ArrayList<String> FILTER(){
+        ArrayList<String> filter = new ArrayList<>();
+        filter.add(brand());
+        filter.add(price());
+        filter.add(os());
+        filter.add(memory());
+        filter.add(storage());
+        filter.add(simslot());
+        filter.add(cameraF());
+        filter.add(cameraB());
+        return filter;
+    }
+    public String cameraB(){return c_camera.pPhoto_Quality;}
+    public String cameraF(){return c_camera.sPhoto_Quality;}
     public String storage(){return c_memory.Internal;}
     public String memory(){return c_memory.RAM;}
     public String price(){return getPrice();}
     public String brand(){return getBrand();}
     public ArrayList<String> colors(){return c_misc.Colors;}
+    public String os(){return c_platform.OS;}
+    public String simslot(){return Integer.toString(c_body.SIM_slot);}
     public int type(){if(keypad) return 0; else return 1;}  //Keypad = 0, Smartphone = 1
     public float getRating(){return rating;}
     

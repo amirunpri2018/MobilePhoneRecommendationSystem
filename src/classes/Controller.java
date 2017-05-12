@@ -8,6 +8,7 @@ package classes;
 
 import java.util.ArrayList;
 import java.io.*;
+import java.util.HashMap;
 import java.util.Scanner;
 import knowledge.Result;
 import static lib.Tools.*;
@@ -165,8 +166,55 @@ public class Controller {
 //        }
         Scanner input = new Scanner(System.in);
         while(true){
+            HashMap<String,ArrayList<String>> map = new HashMap<>();
+            ArrayList<String> in = new ArrayList<>();
+            
+            System.out.print("Brand? #");
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("brand",in);
+            
+            System.out.print("Price? #");
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("price",in);
+            
+            System.out.print("os? #");
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("os",in);
+            
+            System.out.print("Memory? #");
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("memory",in);
+            
+            System.out.print("storage? #");
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("storage",in);
+            
+            System.out.print("simslot? #");
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("numberOfSimSlots",in);
+            
+            System.out.print("front camera? #");
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("f_camera",in);
+            
+            System.out.print("back camera? #");
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("b_camera",in);
+            
             System.out.print("What to search? #");
-            ArrayList<Result> temp = search(input.nextLine());
+            in = new ArrayList<>();
+            in.add(input.nextLine());
+            map.put("search", in);
+            
+            ArrayList<Result> temp = search(map);
             for(Result r:temp){
                 System.out.println(r.getMP().getFullName());
             }

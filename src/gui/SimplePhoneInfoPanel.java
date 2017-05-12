@@ -11,17 +11,12 @@ package gui;
  */
 public class SimplePhoneInfoPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SimplePhoneInfoPanel
-     * @param brand
-     * @param phoneName
-     * @param price
-     */
     public SimplePhoneInfoPanel() {
         initComponents();
     }
     
     public void setup(String brand, String phoneName, String price) {
+        //add specific search result here
         brandLabel.setText(brand);
         nameLabel.setText(phoneName);
         priceLabel.setText(price);
@@ -78,7 +73,7 @@ public class SimplePhoneInfoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DetailPhoneInfoFrame dpif = new DetailPhoneInfoFrame();
         DetailPhoneInfoPanel dpip = dpif.getDetailPhoneInfoPanel();
-        dpip.setup(null);
+        dpip.setup(null); //put result as parameter
         dpif.setVisible(true);
     }//GEN-LAST:event_detailButtonActionPerformed
 

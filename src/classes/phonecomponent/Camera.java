@@ -35,14 +35,22 @@ public class Camera {
     
     public Camera(String pInfo,String cInfo,String vInfo,String sInfo){
         if(pInfo!=null && pInfo.length()!=0 && !pInfo.equals(" ")){
-            pPhoto_Quality = pInfo.split(",")[0];
-            pFeature = pInfo.substring(pPhoto_Quality.length()+2);
+            if(pInfo.equals("No")){
+                pPhoto_Quality = "No";
+            }else{
+                pPhoto_Quality = pInfo.split(",")[0];
+            }
+            pFeature = pInfo;
             cFeature = cInfo;
             vFeature = vInfo;
         }
         if(sInfo!=null && sInfo.length()!=0 && !sInfo.equals(" ")){
-            sPhoto_Quality = sInfo.split(",")[0];
-            sFeature = sInfo.substring(sPhoto_Quality.length()+2);
+            if(sInfo.equals("No")){
+                sPhoto_Quality = "No";
+            }else{
+                sPhoto_Quality = sInfo.split(",")[0];
+            }
+            sFeature = sInfo;
         }
     }
     
@@ -58,10 +66,10 @@ public class Camera {
     public ArrayList<String> getInfo(){
         ArrayList<String> info = new ArrayList<>();
         info = addInfos(info,new String[]{
-            combine("Primary", pPhoto_Quality+", "+pFeature ),
+            combine("Primary", pFeature ),
             combine("Feature",cFeature),
             combine("Video",vFeature),
-            combine("Secondary",sPhoto_Quality+", "+sFeature)
+            combine("Secondary", sFeature )
         });
         return info;
     }
