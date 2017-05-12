@@ -10,12 +10,9 @@ package classes;
  *
  * @author JA
  */
-public class SmartPhone extends MobilePhone{
-    
-    public SmartPhone(String information){
-        super(information);
-        keypad = false;
-        touchscreen = true;
+public class LG extends SmartPhone{
+    public LG(String info, float rating){
+        super(info);
+        this.rating = rating;
     }
-    
 }

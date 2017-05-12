@@ -19,28 +19,28 @@ public class Camera {
 //    private boolean hasS = false;
     
     //Primary (Back) Camera
-    public String pPhoto_Quality = "-";
-    private String pFeature = "";
+    public String pPhoto_Quality = " ";
+    private String pFeature = " ";
     
     //Feature
-    private String cFeature = "-";
+    private String cFeature = " ";
     
     //Video
 //    private final String vVideo_Quality;
-    private String vFeature = "-";
+    private String vFeature = " ";
     
     //Secondary (Front) Camera
-    public String sPhoto_Quality = "-";
-    private String sFeature = "";
+    public String sPhoto_Quality = " ";
+    private String sFeature = " ";
     
     public Camera(String pInfo,String cInfo,String vInfo,String sInfo){
-        if(pInfo!=null && pInfo.length()!=0 && !pInfo.equals("")){
+        if(pInfo!=null && pInfo.length()!=0 && !pInfo.equals(" ")){
             pPhoto_Quality = pInfo.split(",")[0];
             pFeature = pInfo.substring(pPhoto_Quality.length()+2);
             cFeature = cInfo;
             vFeature = vInfo;
         }
-        if(sInfo!=null && sInfo.length()!=0 && !sInfo.equals("")){
+        if(sInfo!=null && sInfo.length()!=0 && !sInfo.equals(" ")){
             sPhoto_Quality = sInfo.split(",")[0];
             sFeature = sInfo.substring(sPhoto_Quality.length()+2);
         }

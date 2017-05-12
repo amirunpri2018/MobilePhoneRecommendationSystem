@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import static lib.Tools.combine;
 import static lib.Tools.loadInfo;
 import static lib.Tools.readLine;
+import static lib.Tools.COMBINELIMIT;
+import static lib.Tools.returnInfo;
 
 /**
  *
@@ -24,8 +26,10 @@ public abstract class MobilePhone {
     protected String price;
     protected String image;
     protected float rating;
+    protected String type;
     
     //ADDITIONAL INFO
+    //<editor-fold defaultstate="collapsed" desc="Components">
     protected String c_network;
 //    protected boolean c_isLaunch;
     protected String c_launch;
@@ -42,10 +46,12 @@ public abstract class MobilePhone {
     protected Tests c_tests;
     protected boolean keypad;
     protected boolean touchscreen;
+    //</editor-fold>
     
     protected int loadDao = 0;
     public boolean loaded = false;
     
+    //<editor-fold defaultstate="collapsed" desc="Getting Info">
     //GET BASIC INFO
     public String getImage(){return image;}
     public String getPrice(){return price;}             
@@ -68,6 +74,34 @@ public abstract class MobilePhone {
     public ArrayList<String> getBattery(){return c_battery.getInfo();}
     public ArrayList<String> getMisc(){return c_misc.getInfo();}
     public ArrayList<String> getTests(){return c_tests.getInfo();}
+    //</editor-fold>
+    
+    //GET ALL INFO
+    //<editor-fold defaultstate="collapsed" desc="getInfo()">
+    public ArrayList<String> getInfo(){
+        ArrayList<String> info = new ArrayList<>();
+        COMBINELIMIT = 32;
+        info.add(combine("Brand",getBrand()));
+        info.add(combine("Name",getName()));
+//        info.add(combine("Image",getImage()));
+        info.add(combine("Price",getPrice()));
+        COMBINELIMIT = 16;
+        info.add(combine("Network",getNetwork()));
+        info.add(combine("Launch",getLaunch()));
+        info.addAll(returnInfo("Body",getBody()));
+        info.addAll(returnInfo("Display",getDisplay()));
+        info.addAll(returnInfo("Platform",getPlatform()));
+        info.addAll(returnInfo("Memory",getMemory()));
+        info.addAll(returnInfo("Camera",getCamera()));
+        info.addAll(returnInfo("Sound",getSound()));
+        info.addAll(returnInfo("Comms",getComms()));
+        info.addAll(returnInfo("Features",getFeatures()));
+        info.addAll(returnInfo("Battery",getBattery()));
+        info.addAll(returnInfo("Misc",getMisc()));
+        info.addAll(returnInfo("Tests",getTests()));
+        return info;
+    }
+    //</editor-fold>
     
     //FILTER
     public String cameraF(){return c_camera.pPhoto_Quality;}
@@ -76,11 +110,15 @@ public abstract class MobilePhone {
     public String memory(){return c_memory.RAM;}
     public String price(){return getPrice();}
     public String brand(){return getBrand();}
+    public ArrayList<String> colors(){return c_misc.Colors;}
+    public int type(){if(keypad) return 0; else return 1;}  //Keypad = 0, Smartphone = 1
     public float getRating(){return rating;}
     
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
     public MobilePhone(String information){
 //        loadDao = 0;
         ArrayList<String> info = readLine(information);
+        type = loadInfo(info.get(loadDao++));
         brand = loadInfo(info.get(loadDao++));
         name = loadInfo(info.get(loadDao++));
         price = loadInfo(info.get(loadDao++));
@@ -127,6 +165,7 @@ public abstract class MobilePhone {
         c_sound = new Sound(loadInfo(info.get(loadDao++))
                 ,loadInfo(info.get(loadDao++))
                 ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
         c_comms = new Comms(loadInfo(info.get(loadDao++))
@@ -153,6 +192,7 @@ public abstract class MobilePhone {
         c_misc = new Misc(loadInfo(info.get(loadDao++))
                 ,loadInfo(info.get(loadDao++))
                 ,loadInfo(info.get(loadDao++))
+                ,loadInfo(info.get(loadDao++))
         );
         
         c_tests = new Tests(loadInfo(info.get(loadDao++))
@@ -165,5 +205,5 @@ public abstract class MobilePhone {
         
         loaded = true;
     }
-    
+    //</editor-fold>
 }

@@ -18,11 +18,13 @@ public class Sound {
     private String alert_types;
     private String loudspeaker;
     private String headphone_jack;
+    private String additional;
     
-    public Sound(String a,String l,String h){
+    public Sound(String a,String l,String h,String ad){
         alert_types = a;
         loudspeaker = l;
         headphone_jack = h;
+        additional = ad;
     }
     
     /**
@@ -37,7 +39,8 @@ public class Sound {
         info = addInfos(info,new String[]{
             combine("Alert Types",alert_types),
             combine("Loudspeaker",loudspeaker),
-            combine("3.5mm Jack", headphone_jack)
+            combine("3.5mm Jack", headphone_jack),
+            combine("Additional ",additional)
         });
         return info;
     }

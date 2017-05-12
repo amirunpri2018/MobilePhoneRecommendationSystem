@@ -16,6 +16,10 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        /*
+        add colour
+        add type
+        */
     }
 
     /**
