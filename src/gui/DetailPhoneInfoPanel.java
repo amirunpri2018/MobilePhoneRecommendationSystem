@@ -5,6 +5,11 @@
  */
 package gui;
 
+import java.util.ArrayList;
+import static lib.Tools.TABTOSPACE;
+import java.util.Arrays;
+import java.util.HashMap;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import knowledge.Information;
 import knowledge.Result;
@@ -27,20 +32,29 @@ public class DetailPhoneInfoPanel extends javax.swing.JPanel {
     }
     
     public void addInformation(Result result) {
-        informationPanel.removeAll();
-        //this should be number of information
-        //for example:
-        //network
-        //launch
-        //body
-        //display
-        //so i have 4 informations to be displayed
-        for(int i=0;i<1;i++) {
-            SingleInformationPanel sip = new SingleInformationPanel();
-            sip.setup(result, "Network"); //maybe u can make a hash map and Network as key
-            //so it retrieve Network information or based on how u retrieve data by using Network as key
-            informationPanel.add(sip);
+        DefaultListModel<String> dlm = new DefaultListModel<>();
+        ArrayList<String> title = result.getMP().title;
+        HashMap<String,ArrayList<String>> map = result.getMP().getInfo2();
+        for(int i=0;i<title.size();i++) {
+            String t = title.get(i);
+            if(!map.get(t).isEmpty())
+                dlm.addElement(t);
+            for(String s:map.get(t)){
+                s = TABTOSPACE(s);
+                if(s.charAt(s.length()-1)==' ') s = s.substring(0,s.length()-3);
+                String[] temp = s.split("\n");
+                if(temp.length>1){
+                    for(String o:temp){
+                        dlm.addElement(o);
+                    }
+                }else dlm.addElement(s);
+            }
+            dlm.addElement(" ");
+//            SingleInformationPanel sip = new SingleInformationPanel();
+//            sip.setup(result, title.get(i));
         }
+        jList.setModel(dlm);
+        jScrollPane.setViewportView(jList);
     }
     
     public void setup(Result result) {
@@ -58,12 +72,13 @@ public class DetailPhoneInfoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         phoneImage = new javax.swing.JLabel();
-        informationPanel = new javax.swing.JPanel();
+        jScrollPane = new javax.swing.JScrollPane(jList);
+        jList = new javax.swing.JList<>();
 
         phoneImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         phoneImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smartphone-samsung-s8.jpg"))); // NOI18N
 
-        informationPanel.setLayout(new java.awt.GridLayout(0, 1));
+        jScrollPane.setViewportView(jList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,18 +87,19 @@ public class DetailPhoneInfoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(phoneImage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(informationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(phoneImage, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-            .addComponent(informationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(phoneImage, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
+            .addComponent(jScrollPane)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel informationPanel;
+    private javax.swing.JList<String> jList;
+    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JLabel phoneImage;
     // End of variables declaration//GEN-END:variables
 

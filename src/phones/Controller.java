@@ -15,8 +15,8 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import knowledge.Result;
+import lib.Search;
 import static lib.Tools.*;
-import static lib.Search.*;
 
 /**
  *
@@ -42,6 +42,7 @@ public class Controller {
     
     //LOAD FILE FROM CSV
     public static void readFile(){
+        System.out.println("ATTEMPT TO READ FILE");
         if(!INIT){
             for(String s:type)TYPE.add("\"\"\""+s+"\"\"\"");
             for(String s:brand)BRANDS.add(s);
@@ -156,6 +157,7 @@ public class Controller {
         }else{
             //FILE ALREADY LOADED
         }
+        System.out.println("FILE READED SUCCESSFULLY");
         INIT = true;
         listOfPhone = merge_sort(listOfPhone);
     }
@@ -168,6 +170,10 @@ public class Controller {
             for(MobilePhone p:listOfPhone){
 //                System.out.println("PHONE "+(i++));
                 System.out.println(p.getFullName());
+//                System.out.println(p.getInfo().toString());
+//                HashMap<String,ArrayList<String>> h = (p.getInfo2());
+//                System.out.println(h.keySet());
+//                System.out.println(h.values());
 //                for(String s: p.getInfo()){
 //                    System.out.println(s);
 //                }
@@ -175,61 +181,62 @@ public class Controller {
             }
         }
         //<editor-fold defaultstate="collapsed" desc="TEST SEARCHING">
-        Scanner input = new Scanner(System.in);
-        while(true){
-            HashMap<String,ArrayList<String>> map = new HashMap<>();
-            ArrayList<String> in = new ArrayList<>();
-            
-            System.out.print("Brand? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("brand",in);
-            
-            System.out.print("Price? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("price",in);
-            
-            System.out.print("os? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("os",in);
-            
-            System.out.print("Memory? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("memory",in);
-            
-            System.out.print("storage? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("storage",in);
-            
-            System.out.print("simslot? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("numberOfSimSlots",in);
-            
-            System.out.print("front camera? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("f_camera",in);
-            
-            System.out.print("back camera? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("b_camera",in);
-            
-            System.out.print("What to search? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("search", in);
-            
-            ArrayList<Result> temp = search(map);
-            for(Result r:temp){
-                System.out.println(r.getMP().getFullName());
-            }
-        }
+//        Scanner input = new Scanner(System.in);
+//        while(true){
+//            HashMap<String,ArrayList<String>> map = new HashMap<>();
+//            ArrayList<String> in = new ArrayList<>();
+//            
+//            System.out.print("Brand? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("brand",in);
+//            
+//            System.out.print("Price? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("price",in);
+//            
+//            System.out.print("os? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("os",in);
+//            
+//            System.out.print("Memory? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("memory",in);
+//            
+//            System.out.print("storage? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("storage",in);
+//            
+//            System.out.print("simslot? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("numberOfSimSlots",in);
+//            
+//            System.out.print("front camera? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("f_camera",in);
+//            
+//            System.out.print("back camera? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("b_camera",in);
+//            
+//            System.out.print("What to search? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("search", in);
+//            
+//            Search search = new Search();
+//            ArrayList<Result> temp = search.search(map);
+//            for(Result r:temp){
+//                System.out.println(r.getMP().getFullName());
+//            }
+//        }
         //</editor-fold>
     }
     

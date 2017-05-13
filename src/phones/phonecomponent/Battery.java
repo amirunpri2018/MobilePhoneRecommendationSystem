@@ -30,7 +30,7 @@ public class Battery {
     public ArrayList<String> getInfo(){
         ArrayList<String> info = new ArrayList<>();
         info = addInfos(info,new String[]{
-            combine(" ",battery),
+            combine("Info",battery),
             combine("Stand-by",standby),
             combine("Talk time",talktime),
             combine("Music play",musicplay)

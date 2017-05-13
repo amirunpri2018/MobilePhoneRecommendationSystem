@@ -18,6 +18,7 @@ import phones.phonecomponent.Display;
 import phones.phonecomponent.Features;
 import phones.phonecomponent.Comms;
 import java.util.ArrayList;
+import java.util.HashMap;
 import static lib.Tools.combine;
 import static lib.Tools.loadInfo;
 import static lib.Tools.readLine;
@@ -29,6 +30,25 @@ import static lib.Tools.returnInfo;
  * @author JA
  */
 public abstract class MobilePhone {
+    
+    public ArrayList<String> title = new ArrayList<String>(){{
+            add("Brand");
+            add("Name");
+            add("Price");
+            add("Network");
+            add("Launch");
+            add("Body");
+            add("Display");
+            add("Platform");
+            add("Memory");
+            add("Camera");
+            add("Sound");
+            add("Comms");
+            add("Features");
+            add("Battery");
+            add("Misc");
+            add("Tests");
+        }};
     
     //BASIC INFO
     protected String brand;
@@ -111,8 +131,30 @@ public abstract class MobilePhone {
         info.addAll(returnInfo("Tests",getTests()));
         return info;
     }
+    public HashMap<String,ArrayList<String>> getInfo2(){
+        HashMap<String,ArrayList<String>> info = new HashMap<>();
+        COMBINELIMIT = 16;
+        info.put("Brand",new ArrayList<String>(){{add(getBrand());}});
+        info.put("Name",new ArrayList<String>(){{add(getName());}});
+        info.put("Price",new ArrayList<String>(){{add("RM "+getPrice());}});
+        info.put("Network",new ArrayList<String>(){{add(getNetwork());}});
+        info.put("Launch",new ArrayList<String>(){{add(getLaunch());}});
+        info.put("Body",getBody());
+        info.put("Display",getDisplay());
+        info.put("Platform",getPlatform());
+        info.put("Memory",getMemory());
+        info.put("Camera",getCamera());
+        info.put("Sound",getSound());
+        info.put("Comms",getComms());
+        info.put("Features",getFeatures());
+        info.put("Battery",getBattery());
+        info.put("Misc",getMisc());
+        info.put("Tests",getTests());
+        return info;
+    }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="FILTERS">
     //FILTER
     public ArrayList<String> FILTER(){
         ArrayList<String> filter = new ArrayList<>();
@@ -135,8 +177,9 @@ public abstract class MobilePhone {
     public ArrayList<String> colors(){return c_misc.Colors;}
     public String os(){return c_platform.OS;}
     public String simslot(){return Integer.toString(c_body.SIM_slot);}
-    public int type(){if(keypad) return 0; else return 1;}  //Keypad = 0, Smartphone = 1
+    public String getType(){return type;}
     public float getRating(){return rating;}
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Constructor">
     public MobilePhone(String information){

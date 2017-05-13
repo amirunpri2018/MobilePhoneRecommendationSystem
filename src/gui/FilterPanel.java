@@ -64,8 +64,9 @@ public class FilterPanel extends javax.swing.JPanel {
             keyword.put("search", new ArrayList<>());
             keyword.get("search").add(searchTextField.getText());
             //searching start here
-//            Result[] results = Search.search(keyword);
-//            showSearchResult(results);
+            ArrayList<Result> result = Search.search(keyword);
+            showSearchResult(result);
+            System.out.println("DONE SEARCHNG");
         }
     };
     private Thread searchThread = new Thread(searchRunnable);
@@ -130,7 +131,7 @@ public class FilterPanel extends javax.swing.JPanel {
         searchThread.start();
     }
 
-    public void showSearchResult(Result[] results) {
+    public void showSearchResult(ArrayList<Result> results) {
         displayInnerPanel.removeAll();
         for (Result result : results) {
             SimpleInformation si = result.getSimpleInformation();

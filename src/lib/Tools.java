@@ -23,6 +23,16 @@ public class Tools {
     //<editor-fold defaultstate="collapsed" desc="INFO READING TOOLS">
     //SAME LENGTH STRING
     public static int COMBINELIMIT = 32;
+    public static String TABTOSPACE(String s){
+        String toRet = "";
+        String[] temp = s.split("\t");
+        for(int i=0;i<temp.length;i++){
+            toRet+=temp[i];
+            for(int j=toRet.length();j<8;j++) toRet+=" ";
+            if(i==0) toRet+=" : ";
+        }
+        return toRet;
+    }
     public static String combine(String a, String b){
         for(int i=a.length();i<COMBINELIMIT;i+=8){
             a += "\t";
@@ -48,7 +58,8 @@ public class Tools {
         String temp;
         if(loadFrom!=null
                 && !loadFrom.equals("-")
-                && loadFrom.length()!=0){
+                && loadFrom.length()!=0
+                && !loadFrom.equals(" ")){
             temp = loadFrom;
         }else{
             temp = "";
@@ -58,7 +69,7 @@ public class Tools {
         for(int i=0;i<a.size();i++){
             String s = a.get(i);
             if(i==0) s = combine(component,s);
-            else s = combine("",s);
+            else s = combine(" ",s);
             a.set(i,s);
         }
         return a;

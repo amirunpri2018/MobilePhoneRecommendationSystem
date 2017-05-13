@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import knowledge.Information;
 import knowledge.Result;
@@ -40,6 +41,8 @@ public class SingleInformationPanel extends javax.swing.JPanel {
          * informations[0] is Announced: 2016, October
          * informations[1] is Status: Available. Released 2016, October
          */
+        System.out.println(title);
+        addInformation(result.getMP().getInfo2().get(title));
     }
     
     public void addSetTitle(String title) {
@@ -47,11 +50,18 @@ public class SingleInformationPanel extends javax.swing.JPanel {
         add(new JLabel(title));
     }
     
-    public void addSingleInformation(Information information) {
-        String conc = information.getLabel()+": "+information.getInformation();
-        add(new JLabel(conc));
+//    public void addSingleInformation(Information information) {
+//        String conc = information.getLabel()+": "+information.getInformation();
+//        add(new JLabel(conc));
+//    }
+    
+    public void addInformation(ArrayList<String> info){
+        for(String s:info){
+            System.out.println(s);
+            add(new JLabel(s));
+        }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

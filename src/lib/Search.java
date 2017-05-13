@@ -29,9 +29,18 @@ public class Search {
     public static ArrayList<Result> search(HashMap<String,ArrayList<String>> map) {
         result = new ArrayList<>();
         finalResult = new ArrayList<>();
+        
         String input = map.get("search").get(0);
         searchByName(input);
-        System.out.println("");
+        
+        ArrayList<String> type = map.get("type");
+        if(type.isEmpty());
+        else for(String t:type){
+            searchByType(t);
+            result = finalResult;
+        }
+        
+        //<editor-fold defaultstate="collapsed" desc="FILTERS">
         ArrayList<ArrayList<String>> filters = new ArrayList<>();
         filters.add(map.get("brand"));
         filters.add(map.get("price"));
@@ -59,19 +68,21 @@ public class Search {
 //            }
 //            System.out.println("filtermode: "+filterMode);
             finalResult = new ArrayList<>();
-            if(filters.get(filterMode).get(0).equals("")){
+            if(filters.get(filterMode).isEmpty()||filters.get(filterMode).get(0).equals("")){
                 filterMode++;
                 continue;
             }
             filter(filterMode,filters.get(filterMode++));
             result = finalResult;
         }
+        //</editor-fold>
         return result;
     }
     
-    public static void searchByName(String input){
+    
+    private static void searchByName(String input){
         String check = input.replaceAll("[^a-zA-Z0-9]", "");
-        if(check.equals("")){
+        if(check.isEmpty()||check.equals("")){
             for(MobilePhone mp:listOfPhone){
                 result.add(new Result(mp));
             }return;
@@ -99,8 +110,13 @@ public class Search {
             if(isNew) result.add(r);
         }
     }
-    
-    public static void filter(int filterBy,ArrayList<String> constraint){
+    private static void searchByType(String type){
+        for(Result r:result){
+            if(type.toLowerCase().contains(r.getMP().getType().toLowerCase()))
+                finalResult.add(r);
+        }
+    }
+    private static void filter(int filterBy,ArrayList<String> constraint){
         if(constraint.get(0).equals("")) return;
         float lower = 0f;
         float upper = Float.MAX_VALUE;

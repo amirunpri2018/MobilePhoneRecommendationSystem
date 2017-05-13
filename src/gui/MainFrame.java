@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+import static phones.Controller.readFile;
 
 /**
  *
@@ -16,10 +17,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        /*
-        add colour
-        add type
-        */
+        readFile();
+        
     }
 
     /**
