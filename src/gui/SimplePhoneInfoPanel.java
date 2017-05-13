@@ -5,7 +5,10 @@
  */
 package gui;
 
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import knowledge.Result;
+import lib.Tools;
 
 /**
  *
@@ -17,14 +20,21 @@ public class SimplePhoneInfoPanel extends javax.swing.JPanel {
     
     public SimplePhoneInfoPanel() {
         initComponents();
+        setVisible(true);
+    }
+    
+    public void setPhoneImage(Result result) {
+        BufferedImage resize = Tools.resize(result.getBufferedImage(), 100);
+        phoneImage.setIcon(new ImageIcon(resize));
     }
     
     public void setup(String brand, String phoneName, String price, Result result) {
         //add specific search result here
-        brandLabel.setText(brand);
-        nameLabel.setText(phoneName);
-        priceLabel.setText(price);
+        brandLabel.setText("Brand: "+brand);
+        nameLabel.setText("Name: "+phoneName);
+        priceLabel.setText("Price: RM"+price);
         this.result = result;
+        setPhoneImage(result);
     }
 
     /**

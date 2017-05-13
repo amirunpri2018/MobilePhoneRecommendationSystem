@@ -69,7 +69,6 @@ public class FilterPanel extends javax.swing.JPanel {
             System.out.println("DONE SEARCHNG");
         }
     };
-    private Thread searchThread = new Thread(searchRunnable);
 
     public FilterPanel() {
         initComponents();
@@ -125,10 +124,14 @@ public class FilterPanel extends javax.swing.JPanel {
         checkboxes.put("b_camera_21AndupMP", b_camera_21AndupMP);
         checkboxes.put("b_camera_noCamera", b_camera_noCamera);
 
+        displayInnerPanel.removeAll();
+        priceFromTextField.setText("0");
+        priceToTextField.setText("9999");
     }
 
     public void searchOnClick() {
-        searchThread.start();
+//        searchThread.start();
+        searchRunnable.run();
     }
 
     public void showSearchResult(ArrayList<Result> results) {
@@ -139,6 +142,7 @@ public class FilterPanel extends javax.swing.JPanel {
             spip.setup(si.brand, si.phoneName, si.price, result);
             displayInnerPanel.add(spip);
         }
+        revalidate();
     }
 
     /**

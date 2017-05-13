@@ -5,14 +5,14 @@
  */
 package gui;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import static lib.Tools.TABTOSPACE;
-import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import knowledge.Information;
 import knowledge.Result;
+import lib.Tools;
 
 /**
  *
@@ -28,7 +28,8 @@ public class DetailPhoneInfoPanel extends javax.swing.JPanel {
     }
     
     public void setPhoneImage(Result result) {
-        phoneImage.setIcon(new ImageIcon(result.getBufferedImage()));
+        BufferedImage resize = Tools.resize(result.getBufferedImage(), 300);
+        phoneImage.setIcon(new ImageIcon(resize));
     }
     
     public void addInformation(Result result) {
