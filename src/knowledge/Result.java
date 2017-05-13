@@ -9,7 +9,6 @@ import javax.imageio.ImageIO;
 
 public class Result {
 
-    private Information[] informations;
     private SimpleInformation simpleInformation;
     private BufferedImage phoneImage;
     private MobilePhone mp;
@@ -32,8 +31,12 @@ public class Result {
         return phoneImage;
     }
 
-    public Information[] getInformations() {
-        return informations;
+    public Information[] getInformations(String key) {
+        /*
+        information to be displayed, get from mp
+        mp.get(key);
+        */
+        return null;
     }
     
     public MobilePhone getMP(){

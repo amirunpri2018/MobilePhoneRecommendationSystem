@@ -5,21 +5,26 @@
  */
 package gui;
 
+import knowledge.Result;
+
 /**
  *
  * @author Woh
  */
 public class SimplePhoneInfoPanel extends javax.swing.JPanel {
 
+    private Result result;
+    
     public SimplePhoneInfoPanel() {
         initComponents();
     }
     
-    public void setup(String brand, String phoneName, String price) {
+    public void setup(String brand, String phoneName, String price, Result result) {
         //add specific search result here
         brandLabel.setText(brand);
         nameLabel.setText(phoneName);
         priceLabel.setText(price);
+        this.result = result;
     }
 
     /**
@@ -72,8 +77,9 @@ public class SimplePhoneInfoPanel extends javax.swing.JPanel {
     private void detailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailButtonActionPerformed
         // TODO add your handling code here:
         DetailPhoneInfoFrame dpif = new DetailPhoneInfoFrame();
+        dpif.setTitle(result.getMP().getFullName());
         DetailPhoneInfoPanel dpip = dpif.getDetailPhoneInfoPanel();
-        dpip.setup(null); //put result as parameter
+        dpip.setup(result); //put result as parameter
         dpif.setVisible(true);
     }//GEN-LAST:event_detailButtonActionPerformed
 

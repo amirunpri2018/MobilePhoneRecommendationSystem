@@ -7,20 +7,39 @@ package gui;
 
 import javax.swing.JLabel;
 import knowledge.Information;
+import knowledge.Result;
 
 /**
  *
  * @author Woh
  */
 public class SingleInformationPanel extends javax.swing.JPanel {
-
     /**
      * Creates new form SingleInformationPanel
      * @param informations
      */
-    public SingleInformationPanel(Information[] informations) {
+    public SingleInformationPanel() {
         initComponents();
-        
+    }
+    
+    public void setup(Result result, String title) {
+        addSetTitle(title);
+        /**
+         * so here we can get a hash map of "title"
+         * for example:
+         * i want to get "Network" information
+         * title is "Network"
+         * 
+         * so Information[] informations = result.getInformations(title);
+         * for each information, addSingleInformation(information)
+         * 
+         * information in "Network" should be like this:
+         * Technology: GSM / CDMA / HSPA / EVDO / LTE
+         * 
+         * information in Launch should be like this:
+         * informations[0] is Announced: 2016, October
+         * informations[1] is Status: Available. Released 2016, October
+         */
     }
     
     public void addSetTitle(String title) {
@@ -28,8 +47,8 @@ public class SingleInformationPanel extends javax.swing.JPanel {
         add(new JLabel(title));
     }
     
-    public void addSingleInformation(String label, Information information) {
-        String conc = label+": "+information.getInformation();
+    public void addSingleInformation(Information information) {
+        String conc = information.getLabel()+": "+information.getInformation();
         add(new JLabel(conc));
     }
 

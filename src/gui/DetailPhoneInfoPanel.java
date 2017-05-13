@@ -28,12 +28,24 @@ public class DetailPhoneInfoPanel extends javax.swing.JPanel {
     
     public void addInformation(Result result) {
         informationPanel.removeAll();
-        informationPanel.add(new SingleInformationPanel(result.getInformations()));
+        //this should be number of information
+        //for example:
+        //network
+        //launch
+        //body
+        //display
+        //so i have 4 informations to be displayed
+        for(int i=0;i<1;i++) {
+            SingleInformationPanel sip = new SingleInformationPanel();
+            sip.setup(result, "Network"); //maybe u can make a hash map and Network as key
+            //so it retrieve Network information or based on how u retrieve data by using Network as key
+            informationPanel.add(sip);
+        }
     }
     
     public void setup(Result result) {
-//        setPhoneImage(result);
-//        addInformation(result);
+        setPhoneImage(result);
+        addInformation(result);
     }
 
     /**

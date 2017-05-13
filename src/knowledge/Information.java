@@ -4,14 +4,15 @@ package knowledge;
 
 public class Information {
 
-    public String information;
+    private String label, information;
     
-    public String getTitle() {
-        return null;
+    public Information(String label, String information) {
+        this.label = label;
+        this.information = information;
     }
     
-    public String[] getInformations() {
-        return null;
+    public String getLabel() {
+        return label;
     }
     
     public String getInformation() {

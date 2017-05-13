@@ -109,26 +109,33 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="numberOfSimSlotsFilterPanel" alignment="1" max="32767" attributes="0"/>
                           <Component id="priceFilterPanel" alignment="0" max="32767" attributes="0"/>
                           <Component id="osFilterScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
                           <Component id="brandFilterScrollPane" alignment="0" max="32767" attributes="0"/>
+                          <Component id="memoryFilterScrollPane" alignment="0" max="32767" attributes="0"/>
                           <Component id="storageFilterScrollPane" alignment="0" max="32767" attributes="0"/>
                           <Component id="frontCameraFilterScrollPane" alignment="0" max="32767" attributes="0"/>
                           <Component id="backCameraFilterScrollPane" alignment="0" max="32767" attributes="0"/>
-                          <Component id="memoryFilterScrollPane" alignment="0" pref="299" max="32767" attributes="0"/>
-                          <Component id="brandFilterLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="priceFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="osFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="memoryFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="storageFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="numberOfSimSlotsFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="frontCameraFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="backCameraFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="priceFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="osFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memoryFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="storageFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="numberOfSimSlotsFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="frontCameraFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="backCameraFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="typeFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="brandFilterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="typeFilterScrollPane" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -136,38 +143,42 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="typeFilterLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="typeFilterScrollPane" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="brandFilterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="brandFilterScrollPane" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="priceFilterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="priceFilterPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="osFilterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="osFilterScrollPane" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="memoryFilterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="memoryFilterScrollPane" pref="100" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="memoryFilterScrollPane" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="storageFilterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="storageFilterScrollPane" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="numberOfSimSlotsFilterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="numberOfSimSlotsFilterPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="frontCameraFilterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="frontCameraFilterScrollPane" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="backCameraFilterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="backCameraFilterScrollPane" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -210,7 +221,7 @@
                                           <Component id="brand_htc" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="brand_nokia" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="173" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -349,9 +360,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="priceFromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="priceFromTextField" alignment="3" max="32767" attributes="0"/>
+                              <Component id="priceFromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="priceToLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="priceToTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -405,14 +416,14 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="os_android" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="os_ios" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="os_windowsPhone" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="os_windowPhone" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="os_other" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="os_otherTextField" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="173" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -424,7 +435,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="os_ios" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="os_windowsPhone" min="-2" max="-2" attributes="0"/>
+                              <Component id="os_windowPhone" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="os_other" min="-2" max="-2" attributes="0"/>
@@ -446,13 +457,10 @@
                         <Property name="text" type="java.lang.String" value="iOS"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="os_windowsPhone">
+                    <Component class="javax.swing.JCheckBox" name="os_windowPhone">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Windows Phone"/>
+                        <Property name="text" type="java.lang.String" value="Window Phone"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="os_windowsPhoneActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="os_other">
                       <Events>
@@ -495,7 +503,7 @@
                                           <Component id="memory_2" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="memory_3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="189" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -528,7 +536,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JCheckBox" name="memory_256">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="256 MB"/>
+                        <Property name="text" type="java.lang.String" value="256MB"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memory_256ActionPerformed"/>
@@ -536,26 +544,23 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_512">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="512 MB"/>
+                        <Property name="text" type="java.lang.String" value="512MB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_1">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="1 GB"/>
+                        <Property name="text" type="java.lang.String" value="1GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="2 GB"/>
+                        <Property name="text" type="java.lang.String" value="2GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_3">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="3 GB"/>
+                        <Property name="text" type="java.lang.String" value="3GB"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memory_3ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_other">
                       <Events>
@@ -632,32 +637,32 @@
                   <SubComponents>
                     <Component class="javax.swing.JCheckBox" name="storage_4">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="4 GB"/>
+                        <Property name="text" type="java.lang.String" value="4GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_8">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="8 GB"/>
+                        <Property name="text" type="java.lang.String" value="8GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_16">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="16 GB"/>
+                        <Property name="text" type="java.lang.String" value="16GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_32">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="32 GB"/>
+                        <Property name="text" type="java.lang.String" value="32GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_64">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="64 GB"/>
+                        <Property name="text" type="java.lang.String" value="64GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_128">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="128 GB"/>
+                        <Property name="text" type="java.lang.String" value="128GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_other">
@@ -734,7 +739,7 @@
                                   <Component id="f_camera_fourToFiveMP" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="f_camera_fiveAndupMP" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="171" max="32767" attributes="0"/>
+                              <EmptySpace pref="173" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -761,32 +766,32 @@
                   <SubComponents>
                     <Component class="javax.swing.JCheckBox" name="f_camera_zeroToOneMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="0 - 1 MP"/>
+                        <Property name="text" type="java.lang.String" value="0-1MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_oneToTwoMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="1 - 2 MP"/>
+                        <Property name="text" type="java.lang.String" value="1-2MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_twoToThreeMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="2 - 3 MP"/>
+                        <Property name="text" type="java.lang.String" value="2-3MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_threeToFourMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="3 - 4 MP"/>
+                        <Property name="text" type="java.lang.String" value="3-4MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_fourToFiveMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="4 - 5 MP"/>
+                        <Property name="text" type="java.lang.String" value="4-5MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_fiveAndupMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="5 MP and above"/>
+                        <Property name="text" type="java.lang.String" value="5MP and up"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -844,27 +849,27 @@
                   <SubComponents>
                     <Component class="javax.swing.JCheckBox" name="b_camera_oneToFiveMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="1 - 5 MP"/>
+                        <Property name="text" type="java.lang.String" value="1-5MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_sixToTenMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="6 - 10 MP"/>
+                        <Property name="text" type="java.lang.String" value="6-10MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_11To15MP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="11 - 15 MP"/>
+                        <Property name="text" type="java.lang.String" value="11-15MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_16To20MP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="16 - 20 MP"/>
+                        <Property name="text" type="java.lang.String" value="16-20MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_21AndupMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="21 MP and above"/>
+                        <Property name="text" type="java.lang.String" value="21MP and up"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_noCamera">
@@ -876,14 +881,68 @@
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="typeFilterLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Type"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="typeFilterScrollPane">
+              <Properties>
+                <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="typeFilterPanel">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="type_smartphone" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="type_keypad" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="178" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="type_smartphone" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="type_keypad" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JCheckBox" name="type_smartphone">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Smartphone"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="type_keypad">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Keypad Phone"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="type_keypadActionPerformed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="searchTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchTextFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="searchButtonTop">
       <Properties>

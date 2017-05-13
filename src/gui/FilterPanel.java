@@ -33,7 +33,7 @@ public class FilterPanel extends javax.swing.JPanel {
         public void run() {
             HashMap<String, ArrayList<String>> keyword = new HashMap<>();
             Iterator checkboxIterator = checkboxes.keySet().iterator();
-            String[] key = {"brand", "price", "os", "memory", "storage", "numberOfSimSlots", "f_camera", "b_camera"};
+            String[] key = {"type","brand", "price", "os", "memory", "storage", "numberOfSimSlots", "f_camera", "b_camera"};
             for (String k : key) {
                 keyword.put(k, new ArrayList<>());
             }
@@ -64,8 +64,8 @@ public class FilterPanel extends javax.swing.JPanel {
             keyword.put("search", new ArrayList<>());
             keyword.get("search").add(searchTextField.getText());
             //searching start here
-            ArrayList<Result> results = Search.search(keyword);
-            showSearchResult(results);
+//            Result[] results = Search.search(keyword);
+//            showSearchResult(results);
         }
     };
     private Thread searchThread = new Thread(searchRunnable);
@@ -75,6 +75,9 @@ public class FilterPanel extends javax.swing.JPanel {
         checkboxes = new HashMap<>();
         textfields = new HashMap<>();
 
+        checkboxes.put("type_smartphone", type_smartphone);
+        checkboxes.put("type_keypad", type_keypad);
+        
         checkboxes.put("brand_samsung", brand_samsung);
         checkboxes.put("brand_apple", brand_apple);
         checkboxes.put("brand_sony", brand_sony);
@@ -92,7 +95,7 @@ public class FilterPanel extends javax.swing.JPanel {
 
         checkboxes.put("os_android", os_android);
         checkboxes.put("os_ios", os_ios);
-        checkboxes.put("os_windowPhone", os_windowsPhone);
+        checkboxes.put("os_windowPhone", os_windowPhone);
         checkboxes.put("os_other", os_other);
         textfields.put("os_otherTextField", os_otherTextField);
 
@@ -127,12 +130,12 @@ public class FilterPanel extends javax.swing.JPanel {
         searchThread.start();
     }
 
-    public void showSearchResult(ArrayList<Result> results) {
+    public void showSearchResult(Result[] results) {
         displayInnerPanel.removeAll();
         for (Result result : results) {
             SimpleInformation si = result.getSimpleInformation();
             SimplePhoneInfoPanel spip = new SimplePhoneInfoPanel();
-            spip.setup(si.brand, si.phoneName, si.price);
+            spip.setup(si.brand, si.phoneName, si.price, result);
             displayInnerPanel.add(spip);
         }
     }
@@ -179,7 +182,7 @@ public class FilterPanel extends javax.swing.JPanel {
         osFilterPanel = new javax.swing.JPanel();
         os_android = new javax.swing.JCheckBox();
         os_ios = new javax.swing.JCheckBox();
-        os_windowsPhone = new javax.swing.JCheckBox();
+        os_windowPhone = new javax.swing.JCheckBox();
         os_other = new javax.swing.JCheckBox();
         os_otherTextField = new javax.swing.JTextField();
         memoryFilterLabel = new javax.swing.JLabel();
@@ -225,6 +228,11 @@ public class FilterPanel extends javax.swing.JPanel {
         b_camera_16To20MP = new javax.swing.JCheckBox();
         b_camera_21AndupMP = new javax.swing.JCheckBox();
         b_camera_noCamera = new javax.swing.JCheckBox();
+        typeFilterLabel = new javax.swing.JLabel();
+        typeFilterScrollPane = new javax.swing.JScrollPane();
+        typeFilterPanel = new javax.swing.JPanel();
+        type_smartphone = new javax.swing.JCheckBox();
+        type_keypad = new javax.swing.JCheckBox();
         searchTextField = new javax.swing.JTextField();
         searchButtonTop = new javax.swing.JButton();
 
@@ -307,7 +315,7 @@ public class FilterPanel extends javax.swing.JPanel {
                             .addComponent(brand_oneplus)
                             .addComponent(brand_htc)
                             .addComponent(brand_nokia))
-                        .addGap(0, 203, Short.MAX_VALUE)))
+                        .addGap(0, 173, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         brandFilterPanelLayout.setVerticalGroup(
@@ -378,7 +386,7 @@ public class FilterPanel extends javax.swing.JPanel {
             .addGroup(priceFilterPanelLayout.createSequentialGroup()
                 .addGroup(priceFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priceFromLabel)
-                    .addComponent(priceFromTextField))
+                    .addComponent(priceFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(priceFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priceToLabel)
@@ -391,12 +399,7 @@ public class FilterPanel extends javax.swing.JPanel {
 
         os_ios.setText("iOS");
 
-        os_windowsPhone.setText("Windows Phone");
-        os_windowsPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                os_windowsPhoneActionPerformed(evt);
-            }
-        });
+        os_windowPhone.setText("Window Phone");
 
         os_other.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,12 +416,12 @@ public class FilterPanel extends javax.swing.JPanel {
                 .addGroup(osFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(os_android)
                     .addComponent(os_ios)
-                    .addComponent(os_windowsPhone)
+                    .addComponent(os_windowPhone)
                     .addGroup(osFilterPanelLayout.createSequentialGroup()
                         .addComponent(os_other)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(os_otherTextField)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         osFilterPanelLayout.setVerticalGroup(
             osFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,7 +431,7 @@ public class FilterPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(os_ios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(os_windowsPhone)
+                .addComponent(os_windowPhone)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(osFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(os_other)
@@ -440,25 +443,20 @@ public class FilterPanel extends javax.swing.JPanel {
 
         memoryFilterLabel.setText("Memory");
 
-        memory_256.setText("256 MB");
+        memory_256.setText("256MB");
         memory_256.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 memory_256ActionPerformed(evt);
             }
         });
 
-        memory_512.setText("512 MB");
+        memory_512.setText("512MB");
 
-        memory_1.setText("1 GB");
+        memory_1.setText("1GB");
 
-        memory_2.setText("2 GB");
+        memory_2.setText("2GB");
 
-        memory_3.setText("3 GB");
-        memory_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                memory_3ActionPerformed(evt);
-            }
-        });
+        memory_3.setText("3GB");
 
         memory_other.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -490,7 +488,7 @@ public class FilterPanel extends javax.swing.JPanel {
                             .addComponent(memory_1)
                             .addComponent(memory_2)
                             .addComponent(memory_3))
-                        .addGap(0, 203, Short.MAX_VALUE)))
+                        .addGap(0, 189, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         memoryFilterPanelLayout.setVerticalGroup(
@@ -517,17 +515,17 @@ public class FilterPanel extends javax.swing.JPanel {
 
         storageFilterLabel.setText("Storage");
 
-        storage_4.setText("4 GB");
+        storage_4.setText("4GB");
 
-        storage_8.setText("8 GB");
+        storage_8.setText("8GB");
 
-        storage_16.setText("16 GB");
+        storage_16.setText("16GB");
 
-        storage_32.setText("32 GB");
+        storage_32.setText("32GB");
 
-        storage_64.setText("64 GB");
+        storage_64.setText("64GB");
 
-        storage_128.setText("128 GB");
+        storage_128.setText("128GB");
 
         javax.swing.GroupLayout storageFilterPanelLayout = new javax.swing.GroupLayout(storageFilterPanel);
         storageFilterPanel.setLayout(storageFilterPanelLayout);
@@ -598,17 +596,17 @@ public class FilterPanel extends javax.swing.JPanel {
 
         frontCameraFilterLabel.setText("Front camera");
 
-        f_camera_zeroToOneMP.setText("0 - 1 MP");
+        f_camera_zeroToOneMP.setText("0-1MP");
 
-        f_camera_oneToTwoMP.setText("1 - 2 MP");
+        f_camera_oneToTwoMP.setText("1-2MP");
 
-        f_camera_twoToThreeMP.setText("2 - 3 MP");
+        f_camera_twoToThreeMP.setText("2-3MP");
 
-        f_camera_threeToFourMP.setText("3 - 4 MP");
+        f_camera_threeToFourMP.setText("3-4MP");
 
-        f_camera_fourToFiveMP.setText("4 - 5 MP");
+        f_camera_fourToFiveMP.setText("4-5MP");
 
-        f_camera_fiveAndupMP.setText("5 MP and above");
+        f_camera_fiveAndupMP.setText("5MP and up");
 
         javax.swing.GroupLayout frontCameraFilterCameraLayout = new javax.swing.GroupLayout(frontCameraFilterCamera);
         frontCameraFilterCamera.setLayout(frontCameraFilterCameraLayout);
@@ -623,7 +621,7 @@ public class FilterPanel extends javax.swing.JPanel {
                     .addComponent(f_camera_threeToFourMP)
                     .addComponent(f_camera_fourToFiveMP)
                     .addComponent(f_camera_fiveAndupMP))
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         frontCameraFilterCameraLayout.setVerticalGroup(
             frontCameraFilterCameraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -647,15 +645,15 @@ public class FilterPanel extends javax.swing.JPanel {
 
         backCameraFilterLabel.setText("Back camera");
 
-        b_camera_oneToFiveMP.setText("1 - 5 MP");
+        b_camera_oneToFiveMP.setText("1-5MP");
 
-        b_camera_sixToTenMP.setText("6 - 10 MP");
+        b_camera_sixToTenMP.setText("6-10MP");
 
-        b_camera_11To15MP.setText("11 - 15 MP");
+        b_camera_11To15MP.setText("11-15MP");
 
-        b_camera_16To20MP.setText("16 - 20 MP");
+        b_camera_16To20MP.setText("16-20MP");
 
-        b_camera_21AndupMP.setText("21 MP and above");
+        b_camera_21AndupMP.setText("21MP and up");
 
         b_camera_noCamera.setText("No camera");
 
@@ -694,6 +692,42 @@ public class FilterPanel extends javax.swing.JPanel {
 
         backCameraFilterScrollPane.setViewportView(backCameraFilterPanel);
 
+        typeFilterLabel.setText("Type");
+
+        typeFilterScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        type_smartphone.setText("Smartphone");
+
+        type_keypad.setText("Keypad Phone");
+        type_keypad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                type_keypadActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout typeFilterPanelLayout = new javax.swing.GroupLayout(typeFilterPanel);
+        typeFilterPanel.setLayout(typeFilterPanelLayout);
+        typeFilterPanelLayout.setHorizontalGroup(
+            typeFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(typeFilterPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(typeFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(type_smartphone)
+                    .addComponent(type_keypad))
+                .addContainerGap(178, Short.MAX_VALUE))
+        );
+        typeFilterPanelLayout.setVerticalGroup(
+            typeFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(typeFilterPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(type_smartphone)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(type_keypad)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        typeFilterScrollPane.setViewportView(typeFilterPanel);
+
         javax.swing.GroupLayout filterPanelLayout = new javax.swing.GroupLayout(filterPanel);
         filterPanel.setLayout(filterPanelLayout);
         filterPanelLayout.setHorizontalGroup(
@@ -705,24 +739,33 @@ public class FilterPanel extends javax.swing.JPanel {
                     .addComponent(priceFilterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(osFilterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(brandFilterScrollPane)
+                    .addComponent(memoryFilterScrollPane)
                     .addComponent(storageFilterScrollPane)
                     .addComponent(frontCameraFilterScrollPane)
                     .addComponent(backCameraFilterScrollPane)
-                    .addComponent(memoryFilterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                    .addComponent(brandFilterLabel)
-                    .addComponent(priceFilterLabel)
-                    .addComponent(osFilterLabel)
-                    .addComponent(memoryFilterLabel)
-                    .addComponent(storageFilterLabel)
-                    .addComponent(numberOfSimSlotsFilterLabel)
-                    .addComponent(frontCameraFilterLabel)
-                    .addComponent(backCameraFilterLabel))
+                    .addGroup(filterPanelLayout.createSequentialGroup()
+                        .addGroup(filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priceFilterLabel)
+                            .addComponent(osFilterLabel)
+                            .addComponent(memoryFilterLabel)
+                            .addComponent(storageFilterLabel)
+                            .addComponent(numberOfSimSlotsFilterLabel)
+                            .addComponent(frontCameraFilterLabel)
+                            .addComponent(backCameraFilterLabel)
+                            .addComponent(typeFilterLabel)
+                            .addComponent(brandFilterLabel))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(typeFilterScrollPane))
                 .addContainerGap())
         );
         filterPanelLayout.setVerticalGroup(
             filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(filterPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(typeFilterLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(typeFilterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(brandFilterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(brandFilterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -737,7 +780,7 @@ public class FilterPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(memoryFilterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(memoryFilterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(memoryFilterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(storageFilterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -754,16 +797,10 @@ public class FilterPanel extends javax.swing.JPanel {
                 .addComponent(backCameraFilterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(backCameraFilterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         filterScrollPane.setViewportView(filterPanel);
-
-        searchTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchTextFieldActionPerformed(evt);
-            }
-        });
 
         searchButtonTop.setText("Search");
         searchButtonTop.addActionListener(new java.awt.event.ActionListener() {
@@ -843,17 +880,9 @@ public class FilterPanel extends javax.swing.JPanel {
         searchOnClick();
     }//GEN-LAST:event_searchButtonTopActionPerformed
 
-    private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
+    private void type_keypadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_keypadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchTextFieldActionPerformed
-
-    private void os_windowsPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_os_windowsPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_os_windowsPhoneActionPerformed
-
-    private void memory_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memory_3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_memory_3ActionPerformed
+    }//GEN-LAST:event_type_keypadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -915,7 +944,7 @@ public class FilterPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox os_ios;
     private javax.swing.JCheckBox os_other;
     private javax.swing.JTextField os_otherTextField;
-    private javax.swing.JCheckBox os_windowsPhone;
+    private javax.swing.JCheckBox os_windowPhone;
     private javax.swing.JLabel priceFilterLabel;
     private javax.swing.JPanel priceFilterPanel;
     private javax.swing.JLabel priceFromLabel;
@@ -938,5 +967,10 @@ public class FilterPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox storage_8;
     private javax.swing.JCheckBox storage_other;
     private javax.swing.JTextField storage_otherTextField;
+    private javax.swing.JLabel typeFilterLabel;
+    private javax.swing.JPanel typeFilterPanel;
+    private javax.swing.JScrollPane typeFilterScrollPane;
+    private javax.swing.JCheckBox type_keypad;
+    private javax.swing.JCheckBox type_smartphone;
     // End of variables declaration//GEN-END:variables
 }
