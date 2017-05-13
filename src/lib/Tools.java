@@ -130,6 +130,7 @@ public class Tools {
         Matcher m = Pattern.compile("([^, \"]\\S*|\"\"\".+?\"\"\")\\s*",Pattern.MULTILINE|Pattern.DOTALL).matcher(str);
         while (m.find()){
             String s = m.group(1).replaceAll("\"","");
+            if(s.length()==1 && s.equals("-")) s = " ";
             if(s.length()>0 && s.charAt(s.length()-1)==',') s=s.substring(0,s.length()-1);
             list.add(s);
         }

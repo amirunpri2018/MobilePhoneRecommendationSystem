@@ -22,7 +22,7 @@ public class Controller {
     
     //LOAD FILE LOCATION
     private static final String PATH = "";
-    private static final String FILE = "hehe (2).csv";
+    private static final String FILE = "hehe (3).csv";
     
     //CHECKER FOR INITIALIZED
     protected static boolean INIT = false;
@@ -32,7 +32,7 @@ public class Controller {
     
     //ARRAYLIST OF TYPES
     public static ArrayList<String> TYPE = new ArrayList<>();
-    private static String[] type = {"Smartphone","Keypad phone"};
+    private static String[] type = {"Smartphone","Keypad"};
     public static ArrayList<String> BRANDS = new ArrayList<>();
     private static String[] brand = {"Samsung","Apple","Nokia","LG","Sony","Blackberry"};
     
@@ -59,21 +59,24 @@ public class Controller {
                         */
                         boolean toRead = true;
                         line = holder;
-                        if(!holding){
-                            line += br.readLine();
-                            String[] t = line.split(",");
-                            if(TYPE.contains(t[0])&&t[t.length-1].equals("\"\"\"EOL\"\"\"")) toRead = false;
-                        }
+                        if(!holding){line = br.readLine();holding = false;}
+//                        System.out.println("line: "+line); //DEBUG
+                        String[] t = line.split(",");
+                        if(TYPE.contains(t[0])&&t[t.length-1].equals("\"\"\"EOL\"\"\"")){toRead = false;}
                         if(toRead){
                             while((holder = br.readLine())!=null){
-                                String[] t = holder.split(",");
+//                                System.out.println("holder: "+holder); //DEBUG
+                                t = holder.split(",");
                                 if(t[t.length-1].equals("\"\"\"EOL\"\"\"")){
                                     line+=combine("\n",holder);
                                     holding = false;
                                     holder = "";
                                     break;
                                 }
-                                if(TYPE.contains(t[0])) break;
+                                if(TYPE.contains(t[0])){
+                                    holding = true;
+                                    break;
+                                }
                                 if(holder.charAt(0)=='-'){
                                     line+=combine("\n",holder); 
                                     holding = false;
@@ -87,6 +90,7 @@ public class Controller {
                         //
                         
                         ArrayList<String> temp = readLine(line);
+////                        Debugging
 //                        int i =0;
 //                        for(String s:temp){
 //                            System.out.println(wtf(i++)+" : "+s);
@@ -109,26 +113,14 @@ public class Controller {
                         temp[temp.length-1] == Phone rating
                         */
                         switch(temp.get(1)){
-                            case "Samsung":
-                                p = new Samsung(line,rating);
-                                break;
-                            case "Apple":
-                                p = new Apple(line,rating);
-                                break;
-                            case "Nokia":
-                                p = new Nokia(line,rating);
-                                break;
-                            case "Blackberry":
-                                p = new Blackberry(line,rating);
-                                break;
-                            case "Sony":
-                                p = new Sony(line,rating);
-                                break;
-                            case "LG":
-                                p = new LG(line,rating);
-                                break;
-                            default:
-                                p = new Samsung("",0.0f);
+                            case "Samsung":     p = new Samsung(line,rating);break;
+                            case "Apple":       p = new Apple(line,rating);break;
+                            case "Nokia":       p = new Nokia(line,rating);break;
+                            case "Blackberry":  p = new Blackberry(line,rating);break;
+                            case "Sony":        p = new Sony(line,rating);break;
+                            case "LG":          p = new LG(line,rating);break;
+                            case "Motorola":    p = new Motorola(line,rating);break;
+                            default:            p = new Samsung("",0.0f); //SURE ERROR
                         }
                         //
                         listOfPhone.add(p);
@@ -153,72 +145,72 @@ public class Controller {
     
     public static void main(String[] args) {
         readFile();
-//        int i =0;
-//        if(!listOfPhone.isEmpty()){
-//            for(MobilePhone p:listOfPhone){
-////                System.out.println("PHONE "+(i++));
-//                System.out.println(p.getFullName());
-////                for(String s: p.getInfo()){
-////                    System.out.println(s);
-////                }
-////                System.out.println("---------------------------");
-//            }
-//        }
-        Scanner input = new Scanner(System.in);
-        while(true){
-            HashMap<String,ArrayList<String>> map = new HashMap<>();
-            ArrayList<String> in = new ArrayList<>();
-            
-            System.out.print("Brand? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("brand",in);
-            
-            System.out.print("Price? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("price",in);
-            
-            System.out.print("os? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("os",in);
-            
-            System.out.print("Memory? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("memory",in);
-            
-            System.out.print("storage? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("storage",in);
-            
-            System.out.print("simslot? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("numberOfSimSlots",in);
-            
-            System.out.print("front camera? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("f_camera",in);
-            
-            System.out.print("back camera? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("b_camera",in);
-            
-            System.out.print("What to search? #");
-            in = new ArrayList<>();
-            in.add(input.nextLine());
-            map.put("search", in);
-            
-            ArrayList<Result> temp = search(map);
-            for(Result r:temp){
-                System.out.println(r.getMP().getFullName());
+        int i =0;
+        if(!listOfPhone.isEmpty()){
+            for(MobilePhone p:listOfPhone){
+//                System.out.println("PHONE "+(i++));
+                System.out.println(p.getFullName());
+//                for(String s: p.getInfo()){
+//                    System.out.println(s);
+//                }
+//                System.out.println("---------------------------");
             }
         }
+        Scanner input = new Scanner(System.in);
+//        while(true){
+//            HashMap<String,ArrayList<String>> map = new HashMap<>();
+//            ArrayList<String> in = new ArrayList<>();
+//            
+//            System.out.print("Brand? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("brand",in);
+//            
+//            System.out.print("Price? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("price",in);
+//            
+//            System.out.print("os? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("os",in);
+//            
+//            System.out.print("Memory? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("memory",in);
+//            
+//            System.out.print("storage? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("storage",in);
+//            
+//            System.out.print("simslot? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("numberOfSimSlots",in);
+//            
+//            System.out.print("front camera? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("f_camera",in);
+//            
+//            System.out.print("back camera? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("b_camera",in);
+//            
+//            System.out.print("What to search? #");
+//            in = new ArrayList<>();
+//            in.add(input.nextLine());
+//            map.put("search", in);
+//            
+//            ArrayList<Result> temp = search(map);
+//            for(Result r:temp){
+//                System.out.println(r.getMP().getFullName());
+//            }
+//        }
     }
     
 }

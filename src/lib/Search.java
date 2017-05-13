@@ -127,6 +127,7 @@ public class Search {
                     }
                 }
             }else if(filterBy==3||filterBy==4){
+                if(info.get(filterBy).equals(" ")) continue;
                 if(compareByte(info.get(filterBy),lowerB)>=0){
                     finalResult.add(result.get(i));
                 }

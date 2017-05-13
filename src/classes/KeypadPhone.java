@@ -28,6 +28,7 @@ public class KeypadPhone extends MobilePhone{
         try{
             c_feature.Games = info.get(loadDao++);
             c_memory.oldSchool(info.get(loadDao++),info.get(loadDao++));
+            c_body.keyboard = info.get(loadDao++);
             loaded = true;
         }catch(ArrayIndexOutOfBoundsException e){
             loaded = false;

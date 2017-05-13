@@ -18,6 +18,7 @@ public class Body{
     public String dimension;
     public String weight;
     private final String build;
+    public String keyboard;
     
     //SIM Card
     public int SIM_slot;
@@ -29,6 +30,7 @@ public class Body{
         build = b;
         SIM_slot = slot;
         SIM_type = t;
+        keyboard = " ";
     }
     
     /**
@@ -45,6 +47,7 @@ public class Body{
             combine("Dimension", dimension),
             combine("Weight",weight),
             combine("Build",build),
+            combine("Keyboard",keyboard),
             combine("SIM",SIM_slot + " "+SIM_type),
         });
         return info;
