@@ -1,6 +1,7 @@
 package knowledge;
 
-import classes.MobilePhone;
+import java.awt.Image;
+import phones.MobilePhone;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;

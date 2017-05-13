@@ -3,9 +3,9 @@ package lib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import static classes.Controller.listOfPhone;
-import static classes.Controller.BRANDS;
-import classes.MobilePhone;
+import static phones.Controller.listOfPhone;
+import static phones.Controller.BRANDS;
+import phones.MobilePhone;
 import knowledge.Result;
 import static lib.Tools.*;
 
@@ -70,6 +70,13 @@ public class Search {
     }
     
     public static void searchByName(String input){
+        String check = input.replaceAll("[^a-zA-Z0-9]", "");
+        if(check.equals("")){
+            for(MobilePhone mp:listOfPhone){
+                result.add(new Result(mp));
+            }return;
+        }
+        
         String[] toSearch = input.split(" ");
         int mode = 0;
         for(String s:BRANDS){
