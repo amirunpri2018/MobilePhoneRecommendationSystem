@@ -106,7 +106,15 @@ public class FilterPanel extends javax.swing.JPanel {
         checkboxes.put("memory_3", memory_3);
         checkboxes.put("memory_other", memory_other);
         textfields.put("memory_otherTextField", memory_otherTextField);
-
+        
+        checkboxes.put("storage_4",storage_4);
+        checkboxes.put("storage_8",storage_8);
+        checkboxes.put("storage_16",storage_16);
+        checkboxes.put("storage_32",storage_32);
+        checkboxes.put("storage_64",storage_64);
+        checkboxes.put("storage_128",storage_128);
+        textfields.put("storage_otherTextField", storage_otherTextField);
+        
         checkboxes.put("numberOfSimSlots_1", number_1);
         checkboxes.put("numberOfSimSlots_2", number_2);
 
