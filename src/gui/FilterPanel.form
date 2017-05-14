@@ -459,7 +459,7 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="os_windowPhone">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Window Phone"/>
+                        <Property name="text" type="java.lang.String" value="Windows Phone"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="os_other">
@@ -503,7 +503,7 @@
                                           <Component id="memory_2" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="memory_3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="189" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="190" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -536,7 +536,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JCheckBox" name="memory_256">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="256MB"/>
+                        <Property name="text" type="java.lang.String" value="256 MB"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memory_256ActionPerformed"/>
@@ -544,22 +544,22 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_512">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="512MB"/>
+                        <Property name="text" type="java.lang.String" value="512 MB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_1">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="1GB"/>
+                        <Property name="text" type="java.lang.String" value="1 GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="2GB"/>
+                        <Property name="text" type="java.lang.String" value="2 GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_3">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="3GB"/>
+                        <Property name="text" type="java.lang.String" value="3 GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="memory_other">
@@ -637,32 +637,35 @@
                   <SubComponents>
                     <Component class="javax.swing.JCheckBox" name="storage_4">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="4GB"/>
+                        <Property name="text" type="java.lang.String" value="4 GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_8">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="8GB"/>
+                        <Property name="text" type="java.lang.String" value="8 GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_16">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="16GB"/>
+                        <Property name="text" type="java.lang.String" value="16 GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_32">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="32GB"/>
+                        <Property name="text" type="java.lang.String" value="32 GB"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="storage_32ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_64">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="64GB"/>
+                        <Property name="text" type="java.lang.String" value="64 GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_128">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="128GB"/>
+                        <Property name="text" type="java.lang.String" value="128 GB"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="storage_other">
@@ -739,7 +742,7 @@
                                   <Component id="f_camera_fourToFiveMP" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="f_camera_fiveAndupMP" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="173" max="32767" attributes="0"/>
+                              <EmptySpace pref="158" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -766,32 +769,32 @@
                   <SubComponents>
                     <Component class="javax.swing.JCheckBox" name="f_camera_zeroToOneMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="0-1MP"/>
+                        <Property name="text" type="java.lang.String" value="0 - 1 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_oneToTwoMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="1-2MP"/>
+                        <Property name="text" type="java.lang.String" value="1 - 2 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_twoToThreeMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="2-3MP"/>
+                        <Property name="text" type="java.lang.String" value="2 - 3 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_threeToFourMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="3-4MP"/>
+                        <Property name="text" type="java.lang.String" value="3 - 4 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_fourToFiveMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="4-5MP"/>
+                        <Property name="text" type="java.lang.String" value="4 - 5 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="f_camera_fiveAndupMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="5MP and up"/>
+                        <Property name="text" type="java.lang.String" value="5 MP and above"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -822,7 +825,7 @@
                                   <Component id="b_camera_21AndupMP" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="b_camera_noCamera" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="165" max="32767" attributes="0"/>
+                              <EmptySpace pref="152" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -849,27 +852,27 @@
                   <SubComponents>
                     <Component class="javax.swing.JCheckBox" name="b_camera_oneToFiveMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="1-5MP"/>
+                        <Property name="text" type="java.lang.String" value="1 - 5 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_sixToTenMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="6-10MP"/>
+                        <Property name="text" type="java.lang.String" value="6 - 10 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_11To15MP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="11-15MP"/>
+                        <Property name="text" type="java.lang.String" value="11 - 15 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_16To20MP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="16-20MP"/>
+                        <Property name="text" type="java.lang.String" value="16 - 20 MP"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_21AndupMP">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="21MP and up"/>
+                        <Property name="text" type="java.lang.String" value="21 MP and above"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="b_camera_noCamera">

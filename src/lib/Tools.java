@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.io.*;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import phones.MobilePhone;
@@ -122,9 +123,10 @@ public class Tools {
     }
 
     public static float toByte(String[] s) {
+//        System.out.println(Arrays.toString(s));
         float l = Float.parseFloat(s[0]);
         int i;
-        switch (s[1].charAt(0)) {
+        switch (s[1].replaceAll(" ","").charAt(0)) {
             case 'K':
                 i = 1;
                 break;

@@ -404,7 +404,7 @@ public class FilterPanel extends javax.swing.JPanel {
 
         os_ios.setText("iOS");
 
-        os_windowPhone.setText("Window Phone");
+        os_windowPhone.setText("Windows Phone");
 
         os_other.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -448,20 +448,20 @@ public class FilterPanel extends javax.swing.JPanel {
 
         memoryFilterLabel.setText("Memory");
 
-        memory_256.setText("256MB");
+        memory_256.setText("256 MB");
         memory_256.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 memory_256ActionPerformed(evt);
             }
         });
 
-        memory_512.setText("512MB");
+        memory_512.setText("512 MB");
 
-        memory_1.setText("1GB");
+        memory_1.setText("1 GB");
 
-        memory_2.setText("2GB");
+        memory_2.setText("2 GB");
 
-        memory_3.setText("3GB");
+        memory_3.setText("3 GB");
 
         memory_other.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -493,7 +493,7 @@ public class FilterPanel extends javax.swing.JPanel {
                             .addComponent(memory_1)
                             .addComponent(memory_2)
                             .addComponent(memory_3))
-                        .addGap(0, 189, Short.MAX_VALUE)))
+                        .addGap(0, 190, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         memoryFilterPanelLayout.setVerticalGroup(
@@ -520,17 +520,22 @@ public class FilterPanel extends javax.swing.JPanel {
 
         storageFilterLabel.setText("Storage");
 
-        storage_4.setText("4GB");
+        storage_4.setText("4 GB");
 
-        storage_8.setText("8GB");
+        storage_8.setText("8 GB");
 
-        storage_16.setText("16GB");
+        storage_16.setText("16 GB");
 
-        storage_32.setText("32GB");
+        storage_32.setText("32 GB");
+        storage_32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                storage_32ActionPerformed(evt);
+            }
+        });
 
-        storage_64.setText("64GB");
+        storage_64.setText("64 GB");
 
-        storage_128.setText("128GB");
+        storage_128.setText("128 GB");
 
         javax.swing.GroupLayout storageFilterPanelLayout = new javax.swing.GroupLayout(storageFilterPanel);
         storageFilterPanel.setLayout(storageFilterPanelLayout);
@@ -601,17 +606,17 @@ public class FilterPanel extends javax.swing.JPanel {
 
         frontCameraFilterLabel.setText("Front camera");
 
-        f_camera_zeroToOneMP.setText("0-1MP");
+        f_camera_zeroToOneMP.setText("0 - 1 MP");
 
-        f_camera_oneToTwoMP.setText("1-2MP");
+        f_camera_oneToTwoMP.setText("1 - 2 MP");
 
-        f_camera_twoToThreeMP.setText("2-3MP");
+        f_camera_twoToThreeMP.setText("2 - 3 MP");
 
-        f_camera_threeToFourMP.setText("3-4MP");
+        f_camera_threeToFourMP.setText("3 - 4 MP");
 
-        f_camera_fourToFiveMP.setText("4-5MP");
+        f_camera_fourToFiveMP.setText("4 - 5 MP");
 
-        f_camera_fiveAndupMP.setText("5MP and up");
+        f_camera_fiveAndupMP.setText("5 MP and above");
 
         javax.swing.GroupLayout frontCameraFilterCameraLayout = new javax.swing.GroupLayout(frontCameraFilterCamera);
         frontCameraFilterCamera.setLayout(frontCameraFilterCameraLayout);
@@ -626,7 +631,7 @@ public class FilterPanel extends javax.swing.JPanel {
                     .addComponent(f_camera_threeToFourMP)
                     .addComponent(f_camera_fourToFiveMP)
                     .addComponent(f_camera_fiveAndupMP))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         frontCameraFilterCameraLayout.setVerticalGroup(
             frontCameraFilterCameraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -650,15 +655,15 @@ public class FilterPanel extends javax.swing.JPanel {
 
         backCameraFilterLabel.setText("Back camera");
 
-        b_camera_oneToFiveMP.setText("1-5MP");
+        b_camera_oneToFiveMP.setText("1 - 5 MP");
 
-        b_camera_sixToTenMP.setText("6-10MP");
+        b_camera_sixToTenMP.setText("6 - 10 MP");
 
-        b_camera_11To15MP.setText("11-15MP");
+        b_camera_11To15MP.setText("11 - 15 MP");
 
-        b_camera_16To20MP.setText("16-20MP");
+        b_camera_16To20MP.setText("16 - 20 MP");
 
-        b_camera_21AndupMP.setText("21MP and up");
+        b_camera_21AndupMP.setText("21 MP and above");
 
         b_camera_noCamera.setText("No camera");
 
@@ -675,7 +680,7 @@ public class FilterPanel extends javax.swing.JPanel {
                     .addComponent(b_camera_16To20MP)
                     .addComponent(b_camera_21AndupMP)
                     .addComponent(b_camera_noCamera))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         backCameraFilterPanelLayout.setVerticalGroup(
             backCameraFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -888,6 +893,10 @@ public class FilterPanel extends javax.swing.JPanel {
     private void type_keypadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_keypadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_type_keypadActionPerformed
+
+    private void storage_32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storage_32ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_storage_32ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

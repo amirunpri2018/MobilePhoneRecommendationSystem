@@ -170,7 +170,7 @@ public abstract class MobilePhone {
     }
     public String cameraB(){return c_camera.pPhoto_Quality;}
     public String cameraF(){return c_camera.sPhoto_Quality;}
-    public String storage(){return c_memory.Internal;}
+    public String storage(){return c_memory.SD_size;}
     public String memory(){return c_memory.RAM;}
     public String price(){return getPrice();}
     public String brand(){return getBrand();}

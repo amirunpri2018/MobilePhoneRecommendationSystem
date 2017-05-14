@@ -69,6 +69,7 @@ public class Search {
 //            System.out.println("filtermode: "+filterMode);
             finalResult = new ArrayList<>();
             if(filters.get(filterMode).isEmpty()||filters.get(filterMode).get(0).equals("")){
+//                System.out.println("???"+filters.get(filterMode));
                 filterMode++;
                 continue;
             }
@@ -137,6 +138,7 @@ public class Search {
             MobilePhone mp = result.get(i).getMP();
             ArrayList<String> info = mp.FILTER();
             //Condition for PRICE
+            if(info.get(filterBy).isEmpty()||info.get(filterBy).equals(" ")) continue;
             if(filterBy==1){
                 float price = Float.parseFloat(info.get(1));
                 if(price>=lower && price<=upper){
@@ -150,7 +152,6 @@ public class Search {
                     }
                 }
             }else if(filterBy==3||filterBy==4){
-                if(info.get(filterBy).equals(" ")) continue;
                 if(compareByte(info.get(filterBy),lowerB)>=0){
                     finalResult.add(result.get(i));
                 }
@@ -159,19 +160,25 @@ public class Search {
                     if(info.get(filterBy).equals("No")){
                         finalResult.add(result.get(i));
                     }
-                }else if(upperB.equals("and MP")){
-                    if(compareByte(info.get(filterBy),lowerB)>=0){
-                        finalResult.add(result.get(i));
-                    }
                 }else{
-                    if(compareByte(info.get(filterBy),lowerB)>=0 && compareByte(info.get(filterBy),upperB)<=0){
+                    if(lowerB.equals("0 MP")){
                         finalResult.add(result.get(i));
+                        continue;
+                    }
+                    if(info.get(filterBy).equals("No")||info.get(filterBy).equals("Yes")) continue;
+                    if(upperB.equals("and MP")){
+                        if(compareByte(info.get(filterBy),lowerB)>=0){
+                            finalResult.add(result.get(i));
+                        }
+                    }else{
+                        if(compareByte(info.get(filterBy),lowerB)>=0 && compareByte(info.get(filterBy),upperB)<=0){
+                            finalResult.add(result.get(i));
+                        }
                     }
                 }
             }
         }
     }
-    
     
     //<editor-fold defaultstate="collapsed" desc="Normal Search">
     private static ArrayList<Result> normalSearch(String str){
