@@ -15,8 +15,6 @@ import java.util.ArrayList;
  */
 public class Memory {
     
-    //private final boolean SD_SIM;   //if the slot is share with sd card
-    
     //SD CARD
     private final String SD_type;
     public String SD_size = "";
@@ -38,7 +36,6 @@ public class Memory {
      * @param R     Size of RAM
      */
     public Memory(String SDt,String SDs,String Int,String R){
-        //SD_SIM = slot;
         SD_type = SDt;
         SD_size = SDs;
         Internal = Int;
@@ -46,7 +43,6 @@ public class Memory {
         Phonebook = "";
         Call_records = "";
     }
-    
     
     /**
      * Return all information
@@ -68,6 +64,11 @@ public class Memory {
         return info;
     }
     
+    /**
+     * For keypad phone only
+     * @param p Phonebook
+     * @param c Call records
+     */
     public void oldSchool(String p,String c){
         Phonebook = p;
         Call_records = c;

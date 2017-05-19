@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.io.*;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import phones.MobilePhone;
@@ -107,6 +106,10 @@ public class Tools {
         }
         return list;
     }
+    
+    public static void displayPhone(ArrayList<MobilePhone> a){
+        for(MobilePhone mp:a) System.out.println(mp.getFullName());
+    }
     //</editor-fold>
 
     //SIZE
@@ -180,15 +183,6 @@ public class Tools {
     }
     //</editor-fold>
 
-    public static void displayHashMap(HashMap map) {
-        Iterator it = map.keySet().iterator();
-        while (it.hasNext()) {
-            String key = (String) it.next();
-            System.out.println("key: " + key);
-            System.out.println(map.get(key));
-        }
-    }
-
     public static boolean createFile(String dir, String file) {
         File directory = new File(dir);
         if (!directory.exists())
@@ -218,7 +212,6 @@ public class Tools {
     //<editor-fold defaultstate="collapsed" desc="DEBUGGING TOOLS">
     //DEBUGGING THINGS
     static String OUTPUT = "output.txt";
-
     public static void writeOUT(String toWrite) {
         createFile("", OUTPUT);
         try {
@@ -231,7 +224,7 @@ public class Tools {
         }
     }
 
-    public static String wtf(int i) {
+    public static String dataColumn(int i) {
         String toRet = "";
         i += 65;
         int j = 64;
@@ -245,6 +238,15 @@ public class Tools {
             toRet += (char) j;
         toRet += (char) i;
         return toRet;
+    }
+    
+    public static void displayHashMap(HashMap map) {
+        Iterator it = map.keySet().iterator();
+        while (it.hasNext()) {
+            String key = (String) it.next();
+            System.out.println("key: " + key);
+            System.out.println(map.get(key));
+        }
     }
     //</editor-fold>
 

@@ -6,49 +6,16 @@
 
 package phones;
 
-import phones.phonecomponent.Memory;
-import phones.phonecomponent.Tests;
-import phones.phonecomponent.Body;
-import phones.phonecomponent.Platform;
-import phones.phonecomponent.Sound;
-import phones.phonecomponent.Battery;
-import phones.phonecomponent.Camera;
-import phones.phonecomponent.Misc;
-import phones.phonecomponent.Display;
-import phones.phonecomponent.Features;
-import phones.phonecomponent.Comms;
+import phones.phonecomponent.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import static lib.Tools.combine;
-import static lib.Tools.loadInfo;
-import static lib.Tools.readLine;
-import static lib.Tools.COMBINELIMIT;
-import static lib.Tools.returnInfo;
+import static lib.Tools.*;
 
 /**
  *
  * @author JA
  */
 public abstract class MobilePhone {
-    
-    public ArrayList<String> title = new ArrayList<String>(){{
-            add("Brand");
-            add("Name");
-            add("Price");
-            add("Network");
-            add("Launch");
-            add("Body");
-            add("Display");
-            add("Platform");
-            add("Memory");
-            add("Camera");
-            add("Sound");
-            add("Comms");
-            add("Features");
-            add("Battery");
-            add("Misc");
-            add("Tests");
-        }};
     
     //BASIC INFO
     protected String brand;
@@ -77,6 +44,25 @@ public abstract class MobilePhone {
     protected boolean keypad;
     protected boolean touchscreen;
     //</editor-fold>
+    
+    public ArrayList<String> title = new ArrayList<String>(){{
+            add("Brand");
+            add("Name");
+            add("Price");
+            add("Network");
+            add("Launch");
+            add("Body");
+            add("Display");
+            add("Platform");
+            add("Memory");
+            add("Camera");
+            add("Sound");
+            add("Comms");
+            add("Features");
+            add("Battery");
+            add("Misc");
+            add("Tests");
+        }};
     
     protected int loadDao = 0;
     public boolean loaded = false;
@@ -113,7 +99,6 @@ public abstract class MobilePhone {
         COMBINELIMIT = 32;
         info.add(combine("Brand",getBrand()));
         info.add(combine("Name",getName()));
-//        info.add(combine("Image",getImage()));
         info.add(combine("Price","RM "+getPrice()));
         COMBINELIMIT = 16;
         info.add(combine("Network",getNetwork()));

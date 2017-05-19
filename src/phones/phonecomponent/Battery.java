@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class Battery {
     
+    //Info
     public String battery;
     public String standby;
     public String talktime;
@@ -27,6 +28,10 @@ public class Battery {
         musicplay = m;
     }
     
+    /**
+     * Returns info held
+     * @return info
+     */
     public ArrayList<String> getInfo(){
         ArrayList<String> info = new ArrayList<>();
         info = addInfos(info,new String[]{

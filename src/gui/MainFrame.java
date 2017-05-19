@@ -5,6 +5,7 @@
  */
 package gui;
 import static phones.Controller.readFile;
+import static phones.Controller.INIT;
 
 /**
  *
@@ -17,8 +18,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        readFile();
-        
+        if(!INIT) readFile();
     }
 
     /**

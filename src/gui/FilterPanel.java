@@ -5,16 +5,13 @@
  */
 package gui;
 
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
-import knowledge.Result;
-import knowledge.SimpleInformation;
+import phones.Result;
 import lib.Search;
-import lib.Tools;
 
 /**
  *
@@ -145,9 +142,8 @@ public class FilterPanel extends javax.swing.JPanel {
     public void showSearchResult(ArrayList<Result> results) {
         displayInnerPanel.removeAll();
         for (Result result : results) {
-            SimpleInformation si = result.getSimpleInformation();
             SimplePhoneInfoPanel spip = new SimplePhoneInfoPanel();
-            spip.setup(si.brand, si.phoneName, si.price, result);
+            spip.setup(result.brand, result.phoneName, result.price, result);
             displayInnerPanel.add(spip);
         }
         revalidate();
