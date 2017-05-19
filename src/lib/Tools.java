@@ -12,8 +12,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 import phones.MobilePhone;
 
 /**
@@ -182,21 +186,53 @@ public class Tools {
         return toHR(s_1 + s_2);
     }
     //</editor-fold>
-
+    
+    //FILE CREATION
+    //<editor-fold defaultstate="collapsed" desc="CREATE FILE">
     public static boolean createFile(String dir, String file) {
         File directory = new File(dir);
-        if (!directory.exists())
-            directory.mkdirs();
-        File f = new File(file);
+        if (!directory.exists())    directory.mkdirs();
+        File f = new File(dir+file);
         try {
-            if (!f.exists())
-                f.createNewFile();
+            if (!f.exists())    f.createNewFile();
         } catch (IOException e) {
             return false;
-        }
-        return true;
+        }return true;
     }
-
+    private static final String PATH2 = "/phones/brands/";
+    public static void createPhoneJAVA(String brandName){
+        File f = new File("src"+PATH2+brandName+".java");
+        createFile("src"+PATH2,brandName+".java");
+        System.out.println("Creating new File: "+f.toString());
+        String type;
+        if(brandName.charAt(brandName.length()-1)=='K') type = "KeypadPhone";
+        else type = "SmartPhone";
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+            String temp = "package phones.brands;\n" +
+                            "import phones."+type+";\n" +
+                            "public class "+brandName+" extends "+type+" {\n" +
+                            "\tpublic "+brandName+"(String information,Float rating){\n" +
+                            "\t\tsuper(information);\n" +
+                            "\t\tthis.rating = rating;\n" +
+                            "\t}\n" +
+                            "}";
+            bw.write(temp);
+            bw.close();
+            JavaCompiler jc = ToolProvider.getSystemJavaCompiler();
+            jc.run(null, null, null, f.toString());
+            File fC = new File("src"+PATH2+brandName+".class");
+            fC.renameTo(new File("build/classes"+PATH2+fC.getName()));
+        } catch (IOException ex) {
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    public static boolean checkPhoneJAVA(String brandName){
+        return new File("src"+PATH2+brandName+".java").exists();
+    }
+    //</editor-fold>
+    
     public static BufferedImage resize(BufferedImage img, int newW) {
         int newH = (int)((double)img.getHeight()/img.getWidth() * (double)newW);
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);

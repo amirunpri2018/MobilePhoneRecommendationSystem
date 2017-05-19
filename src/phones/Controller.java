@@ -10,11 +10,8 @@ import java.util.ArrayList;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import lib.Search;
 import static lib.Tools.*;
 
 /**
@@ -107,10 +104,14 @@ public class Controller {
                          * temp[temp.length-1] == Phone rating
                          * Auto create class dynamically
                          */
-                        String className = "phones.brands."+temp.get(1);
-                        BRANDS.add(className);
-                        if(temp.get(0).equalsIgnoreCase("smartphone")) className+="S";
-                        else className+="K";
+                        String brandName = temp.get(1);
+                        BRANDS.add(brandName);
+                        if(temp.get(0).equalsIgnoreCase("smartphone")) brandName+="S";
+                        else brandName+="K";
+                        if(!checkPhoneJAVA(brandName)){
+                            createPhoneJAVA(brandName);
+                        }
+                        String className = "phones.brands."+brandName;
                         try {
                             Class c = Class.forName(className);
                             Constructor con = c.getConstructor(line.getClass(),rating.getClass());
@@ -130,8 +131,8 @@ public class Controller {
                 System.exit(1);
             }
         }
+//        displayPhone(listOfPhone);
         listOfPhone = merge_sort(listOfPhone);
-        displayPhone(listOfPhone);
         INIT = true;
         System.out.println("DATABASE READED SUCCESSFULLY");
     }
