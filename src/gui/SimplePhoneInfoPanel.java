@@ -17,22 +17,22 @@ import lib.Tools;
 public class SimplePhoneInfoPanel extends javax.swing.JPanel {
 
     private Result result;
-    
+
     public SimplePhoneInfoPanel() {
         initComponents();
         setVisible(true);
     }
-    
+
     public void setPhoneImage(Result result) {
         BufferedImage resize = Tools.resize(result.getBufferedImage(), 100);
         phoneImage.setIcon(new ImageIcon(resize));
     }
-    
+
     public void setup(String brand, String phoneName, String price, Result result) {
         //add specific search result here
-        brandLabel.setText("Brand: "+brand);
-        nameLabel.setText("Name: "+phoneName);
-        priceLabel.setText("Price: RM"+price);
+        brandLabel.setText("Brand: " + brand);
+        nameLabel.setText("Name: " + phoneName);
+        priceLabel.setText("Price: RM" + price);
         this.result = result;
         setPhoneImage(result);
     }
@@ -55,12 +55,12 @@ public class SimplePhoneInfoPanel extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(629, 193));
         setMinimumSize(new java.awt.Dimension(629, 193));
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
         phoneImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        phoneImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smartphone-samsung-s8.jpg"))); // NOI18N
         phoneImage.setToolTipText("");
         add(phoneImage);
+        phoneImage.setIcon(null);
 
         simpleInformationPanel.setLayout(new java.awt.GridLayout(0, 1));
 
