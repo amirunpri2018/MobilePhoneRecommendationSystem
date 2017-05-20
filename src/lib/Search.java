@@ -6,13 +6,17 @@ import java.util.HashMap;
 import static phones.Controller.listOfPhone;
 import static phones.Controller.BRANDS;
 import phones.MobilePhone;
-import knowledge.Result;
+import phones.Result;
 import static lib.Tools.*;
 
+/**
+ *
+ * @author JA
+ */
 public class Search {
     
-    private static ArrayList<Result> result;
-    private static ArrayList<Result> finalResult;
+    private static ArrayList<Result> result;        //correct result of mobilephones
+    private static ArrayList<Result> finalResult;   //temp storage for searching and filtering
     
     /**
      * "fuzziness" = Ration of the fuzziness. 
@@ -25,14 +29,20 @@ public class Search {
     */
     private static final double fuzziness = 0.5;
     
-    //Search by name or brand or both
+    /**
+     * Searching / filtering phones based on user preference
+     * @param map   User-setting for filters
+     * @return List of mobile phones
+     */
     public static ArrayList<Result> search(HashMap<String,ArrayList<String>> map) {
         result = new ArrayList<>();
         finalResult = new ArrayList<>();
         
+        //Searching by name
         String input = map.get("search").get(0);
         searchByName(input);
         
+        //Searching by type
         ArrayList<String> type = map.get("type");
         if(type.isEmpty());
         else for(String t:type){
@@ -63,13 +73,8 @@ public class Search {
          */
         int filterMode = 0;
         while(filterMode<filters.size()){
-//            for(Result r:result){
-//                System.out.println(r.getMP().getFullName());
-//            }
-//            System.out.println("filtermode: "+filterMode);
             finalResult = new ArrayList<>();
             if(filters.get(filterMode).isEmpty()||filters.get(filterMode).get(0).equals("")){
-//                System.out.println("???"+filters.get(filterMode));
                 filterMode++;
                 continue;
             }
@@ -80,7 +85,76 @@ public class Search {
         return result;
     }
     
+    private static void searchByType(String type){
+        for(Result r:result){
+            if(type.toLowerCase().contains(r.getMP().getType().toLowerCase()))
+                finalResult.add(r);
+        }
+    }
+    private static void filter(int filterBy,ArrayList<String> constraint){
+        if(constraint.get(0).equals("")) return;
+        float lower = 0f;
+        float upper = Float.MAX_VALUE;
+        String lowerB = "";
+        String upperB = "";
+        //READING SOME BASIC INFO BEFOREHAND
+        if(filterBy==1){
+            if(!constraint.get(0).isEmpty()) lower = Float.parseFloat(constraint.get(0));
+            if(!constraint.get(1).isEmpty()) upper = Float.parseFloat(constraint.get(1));
+        }else if(filterBy==3||filterBy==4){
+            lowerB = constraint.get(0);
+        }else if(filterBy==6||filterBy==7){
+            lowerB = constraint.get(0).split(" ")[0]+" MP";
+            if(constraint.contains("No camera")) lowerB = "No";
+            else upperB = constraint.get(constraint.size()-1).split(" ")[2]+" MP";
+        }
+        
+        for(int i=0;i<result.size();i++){
+            MobilePhone mp = result.get(i).getMP();
+            ArrayList<String> info = mp.FILTER();
+            //Condition for PRICE
+            if(info.get(filterBy).isEmpty()||info.get(filterBy).equals(" ")) continue;
+            if(filterBy==1){
+                float price = Float.parseFloat(info.get(1));
+                if(price>=lower && price<=upper){
+                    finalResult.add(result.get(i));
+                }
+            }else if(filterBy==0||filterBy==2||filterBy==5){    //Condition for BRAND and OS and SIM slots
+                for(String c:constraint){
+                    if(info.get(filterBy).toLowerCase().contains(c.toLowerCase())){
+                        finalResult.add(result.get(i));
+                    }
+                }
+            }else if(filterBy==3||filterBy==4){                 //Condition for MEMORY and STORAGE
+                if(compareByte(info.get(filterBy),lowerB)>=0){
+                    finalResult.add(result.get(i));
+                }
+            }else if(filterBy==6||filterBy==7){                 //Condition for CAMERAS
+                if(lowerB.equals("No")){
+                    if(info.get(filterBy).equals("No")){
+                        finalResult.add(result.get(i));
+                    }
+                }else{
+                    if(lowerB.equals("0 MP")){
+                        finalResult.add(result.get(i));
+                        continue;
+                    }
+                    if(info.get(filterBy).equals("No")||info.get(filterBy).equals("Yes")) continue;
+                    if(upperB.equals("and MP")){
+                        if(compareByte(info.get(filterBy),lowerB)>=0){
+                            finalResult.add(result.get(i));
+                        }
+                    }else{
+                        if(compareByte(info.get(filterBy),lowerB)>=0 && compareByte(info.get(filterBy),upperB)<=0){
+                            finalResult.add(result.get(i));
+                        }
+                    }
+                }
+            }
+        }
+    }
     
+    //<editor-fold defaultstate="collapsed" desc="Searching by names">
     private static void searchByName(String input){
         String check = input.replaceAll("[^a-zA-Z0-9]", "");
         if(check.isEmpty()||check.equals("")){
@@ -111,75 +185,6 @@ public class Search {
             if(isNew) result.add(r);
         }
     }
-    private static void searchByType(String type){
-        for(Result r:result){
-            if(type.toLowerCase().contains(r.getMP().getType().toLowerCase()))
-                finalResult.add(r);
-        }
-    }
-    private static void filter(int filterBy,ArrayList<String> constraint){
-        if(constraint.get(0).equals("")) return;
-        float lower = 0f;
-        float upper = Float.MAX_VALUE;
-        String lowerB = "";
-        String upperB = "";
-        if(filterBy==1){
-            if(!constraint.get(0).isEmpty()) lower = Float.parseFloat(constraint.get(0));
-            if(!constraint.get(1).isEmpty()) upper = Float.parseFloat(constraint.get(1));
-        }else if(filterBy==3||filterBy==4){
-            lowerB = constraint.get(0);
-        }else if(filterBy==6||filterBy==7){
-            lowerB = constraint.get(0).split(" ")[0]+" MP";
-            if(constraint.contains("No camera")) lowerB = "No";
-            else upperB = constraint.get(constraint.size()-1).split(" ")[2]+" MP";
-        }
-        
-        for(int i=0;i<result.size();i++){
-            MobilePhone mp = result.get(i).getMP();
-            ArrayList<String> info = mp.FILTER();
-            //Condition for PRICE
-            if(info.get(filterBy).isEmpty()||info.get(filterBy).equals(" ")) continue;
-            if(filterBy==1){
-                float price = Float.parseFloat(info.get(1));
-                if(price>=lower && price<=upper){
-                    finalResult.add(result.get(i));
-                }
-            }else if(filterBy==0||filterBy==2||filterBy==5){
-                for(String c:constraint){
-                    //Condition for BRAND and OS
-                    if(info.get(filterBy).toLowerCase().contains(c.toLowerCase())){
-                        finalResult.add(result.get(i));
-                    }
-                }
-            }else if(filterBy==3||filterBy==4){
-                if(compareByte(info.get(filterBy),lowerB)>=0){
-                    finalResult.add(result.get(i));
-                }
-            }else if(filterBy==6||filterBy==7){
-                if(lowerB.equals("No")){
-                    if(info.get(filterBy).equals("No")){
-                        finalResult.add(result.get(i));
-                    }
-                }else{
-                    if(lowerB.equals("0 MP")){
-                        finalResult.add(result.get(i));
-                        continue;
-                    }
-                    if(info.get(filterBy).equals("No")||info.get(filterBy).equals("Yes")) continue;
-                    if(upperB.equals("and MP")){
-                        if(compareByte(info.get(filterBy),lowerB)>=0){
-                            finalResult.add(result.get(i));
-                        }
-                    }else{
-                        if(compareByte(info.get(filterBy),lowerB)>=0 && compareByte(info.get(filterBy),upperB)<=0){
-                            finalResult.add(result.get(i));
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
     //<editor-fold defaultstate="collapsed" desc="Normal Search">
     private static ArrayList<Result> normalSearch(String str){
         ArrayList<Result> result = new ArrayList<>();
@@ -192,16 +197,12 @@ public class Search {
     }
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Fuzzy Search">
-    ///FUZZY SEARCH
+    /// FUZZY SEARCH
     ///---------------------------------------------------------------------
     /// Fuzzy searches a list of Strings.
     /// Parameters
     /// "word"          = The word to find.
-    /// </param>
-    
-    /// <returns>
     /// The list with the found words.
-    /// </returns>
     private static int LevenshteinDistance(String src, String dest){
         int[][] d = new int[src.length() + 1][dest.length() + 1];
         int i, j, cost;
@@ -258,5 +259,6 @@ public class Search {
                 result.add(new Result(listOfPhone.get(i)));
         }
     }
+    //</editor-fold>
     //</editor-fold>
 }

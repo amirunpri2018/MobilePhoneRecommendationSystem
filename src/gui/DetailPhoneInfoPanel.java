@@ -11,7 +11,7 @@ import static lib.Tools.TABTOSPACE;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import knowledge.Result;
+import phones.Result;
 import lib.Tools;
 
 /**
@@ -51,8 +51,6 @@ public class DetailPhoneInfoPanel extends javax.swing.JPanel {
                 }else dlm.addElement(s);
             }
             dlm.addElement(" ");
-//            SingleInformationPanel sip = new SingleInformationPanel();
-//            sip.setup(result, title.get(i));
         }
         jList.setModel(dlm);
         jScrollPane.setViewportView(jList);

@@ -15,6 +15,7 @@ import static lib.Tools.*;
  */
 public class Body{
     
+    //Info
     public String dimension;
     public String weight;
     private final String build;

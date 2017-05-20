@@ -7,7 +7,7 @@ package gui;
 
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
-import knowledge.Result;
+import phones.Result;
 import lib.Tools;
 
 /**
