@@ -222,6 +222,8 @@ public class Tools {
             JavaCompiler jc = ToolProvider.getSystemJavaCompiler();
             jc.run(null, null, null, f.toString());
             File fC = new File("src"+PATH2+brandName+".class");
+            File fCDir = new File("build/classes"+PATH2);
+            if(!fCDir.exists()) fCDir.mkdirs();
             fC.renameTo(new File("build/classes"+PATH2+fC.getName()));
         } catch (IOException ex) {
             Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);

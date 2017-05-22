@@ -63,7 +63,14 @@ public class FilterPanel extends javax.swing.JPanel {
             //searching start here
             ArrayList<Result> result = Search.search(keyword);
             showSearchResult(result);
+            System.out.println("-----------------------------------");
             System.out.println("DONE SEARCHNG");
+            System.out.println("-----------------------------------");
+            System.out.println("Number of phones found: "+result.size());
+            for(Result r:result){
+                System.out.println(r.getMP().getFullName());
+            }
+            System.out.println("-----------------------------------");
         }
     };
 
