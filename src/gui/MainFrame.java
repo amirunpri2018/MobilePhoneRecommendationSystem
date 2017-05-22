@@ -18,7 +18,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        if(!INIT) readFile();
+        while(!INIT) readFile();
     }
 
     /**

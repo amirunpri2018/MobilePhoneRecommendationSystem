@@ -122,9 +122,13 @@ public class Controller {
                         }
                         //</editor-fold>
                     }
-                }catch(IOException | NullPointerException ex) {
+                }catch(IOException ex) {
                     Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                     System.exit(1);
+                }catch(NullPointerException ex){
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    listOfPhone.clear();
+                    return;
                 }
             }else{
                 System.out.println("!!!DATABASE NOT FOUND!!!");
